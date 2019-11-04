@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/onsenui/css/onsenui.css">
+    <link rel="stylesheet" href="https://unpkg.com/onsenui/css/onsen-css-components.min.css">
+    <script src="https://unpkg.com/onsenui/js/onsenui.min.js"></script>
+
+</head>
+<style>
+    .bg {
+        background-color: RGB(255, 160, 122, 0.3);
+        background-repeat: no-repeat;
+        background-attachment: scroll;
+        overflow: scroll;
+    }
+
+    .bg1 {
+        background-color: LIGHTPINK;
+        border-radius: 30px;
+        display: block;
+        margin: 15px;
+        height: auto;
+
+    }
+
+    .div {
+
+        text-indent: 22px;
+        width: 380px;
+        height: 75px;
+        font-size: 29px;
+        font-weight: bold;
+    }
+
+    .quick {
+        float: left;
+        width: 90;
+        height: 95;
+        margin: 5px;
+    }
+
+    .clearfix {
+        overflow: auto;
+    }
+
+    .img {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 95px;
+        height: 95px;
+
+    }
+</style>
+
+<body>
+    <ons-page>
+        <ons-toolbar style="background-color:	LightCoral">
+
+            <div class="left">
+                <ons-icon size="45px" onclick="index()" icon="angle-left">
+                </ons-icon>
+            </div>
+        </ons-toolbar>
+        <ons-page>
+            <div class="bg">
+                <div class="bg1">
+                    <div class="clearfix">
+                        <img class="quick" src="img/brackets.png">
+                        <br><br>
+                        <div class="div">เทียนทัตนคลินิก</div>
+
+                        <p>รายการนัดของฉัน</p>
+                        <center>
+                            <b id="namehis"></b>
+                        </center>
+
+                    </div>
+                    <hr>
+                    <div id="show"></div>
+
+
+
+                </div>
+            </div>
+        </ons-page>
+</body>
+</ons-page>
+</body>
+
+<script>
+    var index = localStorage.getItem("Index");
+    var settings = {
+        "async": true,
+        "crossDomain": true,
+        "url": "http://172.19.131.212:8080/book",
+        "method": "GET",
+        "headers": {
+            "Content-Type": "application/x-www-form-urlencoded",
+            "cache-control": "no-cache",
+            "Postman-Token": "7beffd31-3e5f-4d18-be90-1b46ee489568"
+        }
+    }
+    $.ajax(settings).done(function (response) {
+        console.log(response);
+        let loop = response.data;
+        // console.log(loop.length);
+        var html = "";
+        for (let j = 0; j < loop.length; j++) {
+
+            if (getItemCus == loop[j].CusID) {
+                console.log(" Loop_Fname 1: " + loop[j].BookID);
+
+                $('#show').append(
+                    '<ons-row >' +
+                    '<ons-col style="background:white; border-radius: 10px; display: block; margin: 10px;">' +
+                    '<div id="displaybox"></div>' +
+                    '<div class="clearfix">' +
+                    '<p><img class="quick" src="img/health-report.png" width="50"' +
+                    'height="50">' +
+                    "วันที่ : " + loop[j].start + '<br>' + "ประเภท : " + loop[j].Type + '<br>' + "รายละเอียด : " + loop[j].Detail + '</p>' +
+                    '</div>' +
+                    '</ons-col>' +
+                    '</ons-row>'
+                )
+
+            }
+        }
+
+    });
+
+
+    var settings1 = {
+        "async": true,
+        "crossDomain": true,
+        "url": "http://172.19.131.212:8080/customer",
+        "method": "GET",
+        "headers": {
+            "Content-Type": "application/x-www-form-urlencoded",
+            "cache-control": "no-cache",
+            "Postman-Token": "7ce21012-571f-46f2-b635-45e9610ecc35"
+        }
+    }
+    var getItemCus = localStorage.getItem("Index");
+    console.log(getItemCus);
+    $.ajax(settings1).done(function (response) {
+        console.log(response);
+        let loopCus = response.data;
+
+        for (let i = 0; i < loopCus.length; i++) {
+
+            console.log(" Loop_Fname 1: " + loopCus[i].Fname);
+
+            if (getItemCus == loopCus[i].CusID) {
+
+                $("#namehis").html("คุณ   " + loopCus[i].Fname);
+                console.log("indexHis: " + getItemCus);
+                console.log("Fname 1: " + loopCus[i].Fname);
+            }
+        }
+    });
+
+</script>
+</script>
+<script>
+    function index() {
+        window.location.href = 'home.html'
+    }
+</script>
+
+</html>

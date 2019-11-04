@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/onsenui/css/onsenui.css">
+    <link rel="stylesheet" href="https://unpkg.com/onsenui/css/onsen-css-components.min.css">
+    <script src="https://unpkg.com/onsenui/js/onsenui.min.js"></script>
+
+</head>
+<style>
+    .bg {
+        background-color: RGB(255, 160, 122, 0.3);
+        background-repeat: no-repeat;
+        background-attachment: scroll;
+        overflow: scroll;
+    }
+
+    .bg1 {
+        background-color: white;
+        border-radius: 30px;
+        display: block;
+        margin: 15px;
+        height: 615px;
+
+    }
+
+    .div {
+
+        text-indent: 22px;
+        width: 380px;
+        height: 75px;
+        font-size: 29px;
+        font-weight: bold;
+    }
+
+    .quick {
+        float: left;
+        width: 90;
+        height: 95;
+        margin: 5px;
+    }
+
+    .clearfix {
+        overflow: auto;
+    }
+
+    .img {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 95px;
+        height: 95px;
+
+    }
+</style>
+
+<body>
+    <ons-page>
+        <ons-toolbar style="background-color:	LightCoral">
+
+            <div class="left">
+                <ons-icon size="45px" onclick="selectq()" icon="angle-left">
+                </ons-icon>
+            </div>
+        </ons-toolbar>
+        <ons-page>
+            <div class="bg">
+                <div class="bg1">
+                    <div class="clearfix">
+                        <img class="quick" src="img/brackets.png">
+                        <br><br>
+                        <div class="div">เทียนทัตนคลินิก</div>
+
+                    </div>
+                    <hr>
+                    <br>
+                    <br>
+                    <p style="text-align: center; margin-top: 10px;">เลือกใช้บริการ</p>
+
+                    <input class="form-control" style="text-align: center;" type="text" name="" id="type6" value="ทันตกรรมอื่นๆ" disabled>
+
+                    <br>
+                    <select id="cate6" class="select-input select-input--material" style="display: block;
+                          margin-left: auto;
+                          margin-right: auto;">
+                        <option>ทำเดือย(เสริมแกนฟัน)</option>
+                        <option>เคลือบหลุมร่องฟัน</option>
+                        <option>เอ็กซเรย์</option>
+                        <option>ฟอกฟันขาว</option>
+                        <option>ปรึกษาทันตแพทย์</option>
+                    </select>
+
+                </div>
+                <ons-button style="background: SALMON;" modifier="large" onclick="queue()">จองคิว</ons-button>
+            </div>
+        </ons-page>
+</body>
+<script>
+    function qq() {
+        window.location.href = 'confirm.html'
+    }
+
+    function queue() {
+
+        var type_6 = document.getElementById("type6").value;
+        var type6 = localStorage.setItem('type6', type_6)
+
+        var cate_6 = document.getElementById("cate6").value;   
+        var category = localStorage.setItem('category6', cate_6)
+
+
+        var status = localStorage.setItem('status', 1)
+
+        var getLocalDate = localStorage.getItem("date");
+        var getLocalTime = localStorage.getItem("time");
+        var getLocalCategory6 = localStorage.getItem("category6");
+        var getLocalStatus = localStorage.getItem("status");
+        var getLocalCusID = localStorage.getItem("Index")
+        var getLocalType6 = localStorage.getItem("type6");
+        var Last_BookID = localStorage.getItem("last_BookID");
+        var getLocal_Last_BookID = parseInt(Last_BookID) + 1;
+
+        var settings = {
+            "async": true,
+            "crossDomain": true,
+            "url": "http://192.168.43.235:8080/bookq?BookID=" + getLocal_Last_BookID + "&start=" + getLocalDate + "&Time=" + getLocalTime + "&Detail=" + getLocalCategory6 + "&Status=" + getLocalStatus + "&CusID=" + getLocalCusID + "&Type=" + getLocalType6+ "&end=" + getLocalDate,
+            "method": "POST",
+            "headers": {
+                "Content-Type": "application/x-www-form-urlencoded",
+                "cache-control": "no-cache",
+                "Postman-Token": "8a9a2178-4caa-4638-9293-66d4c756fd1e"
+            },
+            "data": ""
+        }
+
+        $.ajax(settings).done(function (response) {
+            console.log(response);
+        });
+        qq();
+
+    }
+    function selectq() {
+        window.location.href = 'selectq.html'
+    }
+</script>
+
+</html>

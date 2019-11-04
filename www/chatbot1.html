@@ -1,0 +1,87 @@
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://unpkg.com/onsenui/css/onsenui.css">
+    <link rel="stylesheet" href="https://unpkg.com/onsenui/css/onsen-css-components.min.css">
+    <script src="https://unpkg.com/onsenui/js/onsenui.min.js"></script>
+    
+</head>
+<style>
+    .bg {
+        background-color: RGB(255, 160, 122, 0.3);
+        background-repeat: no-repeat;
+        background-attachment: scroll;
+        overflow: scroll;
+        display: block;
+        height: 700px;
+    }
+
+    .div {
+
+        text-indent: 22px;
+        width: 380px;
+        height: 75px;
+        font-size: 29px;
+        font-weight: bold;
+    }
+
+    .quick {
+        float: left;
+        width: 90;
+        height: 95;
+        margin: 5px;
+    }
+
+    .clearfix {
+        overflow: auto;
+    }
+
+    .img {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 95px;
+        height: 95px;
+
+    }
+
+    .chatbot {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 23em
+        
+    }
+</style>
+
+<body>
+    <ons-page>
+        <ons-toolbar style="background-color:	LightCoral">
+
+            <div class="left">
+                <ons-icon size="45px" onclick="index()" icon="angle-left">
+                </ons-icon>
+            </div>
+        </ons-toolbar>
+        <ons-page>
+            <div class="bg">
+                
+
+                    <div class="chatbot">
+                        <br><br>
+                        <iframe allow="microphone;" width="365" height="600"
+                            src="https://console.dialogflow.com/api-client/demo/embedded/0166804a-baef-4891-9c2d-f4a80c962d42">
+                        </iframe>
+                        
+                    </div>
+
+                </div>
+                
+        </ons-page>
+</body>
+<script>
+    function index() {
+        window.location.href = 'home.html'
+    }
+</script>
+
+</html>

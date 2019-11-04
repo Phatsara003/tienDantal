@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://unpkg.com/onsenui/css/onsenui.css">
+    <link rel="stylesheet" href="https://unpkg.com/onsenui/css/onsen-css-components.min.css">
+    <script src="https://unpkg.com/onsenui/js/onsenui.min.js"></script>
+    <script src="cordova.js"></script>
+</head>
+<style>
+    .bg {
+        background-color: RGB(255, 160, 122, 0.3);
+        background-repeat: no-repeat;
+        background-attachment: scroll;
+        overflow: scroll;
+        height: 743px;
+    }
+.img {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 350px;
+        height: 370px;
+
+    }
+</style>
+<body>
+    <ons-page>
+            <div class="bg">
+        <div class="container">
+                <div>
+                        <img class="img" src="img/logo.png">
+                    </div>
+            <div class="row">
+                <div class="col">
+                <div style="text-align: center; margin-top: 50px;">
+                    
+                    <br>
+                    <ons-button style="background: #B22222" modifier="medium" onclick="signout()" >SIGN OUT</ons-button>
+                </div>
+            </div>
+        </div>
+        </div>
+            </div>
+    </ons-page>
+</body>
+<script>
+function signout() {
+        window.location.href = 'index.html'
+    }
+</script>
+</html>

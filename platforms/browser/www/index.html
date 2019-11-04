@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/onsenui/css/onsenui.css">
+    <link rel="stylesheet" href="https://unpkg.com/onsenui/css/onsen-css-components.min.css">
+    <script src="https://unpkg.com/onsenui/js/onsenui.min.js"></script>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head>
+<style>
+    .bg {
+        background-color: RGB(255, 160, 122, 0.3);
+        background-repeat: no-repeat;
+        background-attachment: scroll;
+        overflow: scroll;
+        height: 743px;
+    }
+
+    .img {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 350px;
+        height: 370px;
+
+    }
+</style>
+
+<body>
+    <ons-page>
+        <div class="bg">
+            <div class="container">
+                <div>
+                    <img class="img" src="img/logo.png">
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div style="text-align: center; margin-top: 50px;">
+                            <p>
+                                <ons-input id="cusnum" modifier="underbar" placeholder="เลขสมาชิก" float>
+                                </ons-input>
+                            </p>
+                            <br>
+                            <ons-button style=" background: SALMON;" modifier="medium" onclick="login()">LOGIN
+                            </ons-button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ons-page>
+</body>
+<script>
+    var settings = {
+        "async": true,
+        "crossDomain": true,
+        "url": "http://192.168.137.158:8080/customer/",
+        "method": "GET",
+        "headers": {
+            "cache-control": "no-cache",
+            "Postman-Token": "4d85d90c-90d7-48a1-bac6-a19b0c736293"
+        }
+    }
+    function login() {
+        var cusnum = document.getElementById('cusnum').value;
+        if (cusnum != null) {
+            $.ajax(settings).done(function (response) {
+                let loopp = response.data;
+
+                for (let i = 0; i < loopp.length; i++) {
+
+                    if (cusnum == loopp[i].Customernum) {
+                        localStorage.setItem("Index", loopp[i].CusID);
+                        console.log(loopp[i].CusID);
+                        window.location.href = 'home.html'
+
+                    }
+                }
+
+            });
+        }
+
+
+    }
+
+</script>
+<!-- <script>
+
+    $("#btn1").click(function () {
+
+        var cusnum = $("#cusnum").val();
+
+
+        //Create a Web Api url for getting a member info
+        var url = "http://192.168.137.158:8080/customer/";
+        var url = url + cusnum;
+        console.log(url);
+        window.onerror = function (msg, url, linenumber) {
+            alert('Error message: ' + msg + '\nURL: ' + url + '\nLine Number: ' + linenumber);
+            return true;
+        }
+
+        //Get data from API
+        $.get(url, function (data, status) {
+
+            console.log(data);
+            if(data.data.length > 0  ){
+                console.log(data.data.length);
+           
+                localStorage.setItem("Index",data.data[0].CusID)
+                console.log(data.data[0].CusID)
+                // window.location.href = 'home.html'
+                
+            }
+            // else{
+                
+            //     window.location.href = 'index.html'
+            // }
+        });
+
+    });
+
+</script> -->
+
+</html>

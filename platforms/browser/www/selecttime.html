@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/onsenui/css/onsenui.css">
+    <link rel="stylesheet" href="https://unpkg.com/onsenui/css/onsen-css-components.min.css">
+    <script src="https://unpkg.com/onsenui/js/onsenui.min.js"></script>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <!-- date -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
+    <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+</head>
+<style>
+    .bg {
+        background-color: RGB(255, 160, 122, 0.3);
+        background-repeat: no-repeat;
+        background-attachment: scroll;
+        overflow: scroll;
+    }
+
+    .bg1 {
+        background-color: white;
+        border-radius: 30px;
+        display: block;
+        margin: 15px;
+        height: 660px;
+
+    }
+
+    .div {
+
+        text-indent: 22px;
+        width: 380px;
+        height: 75px;
+        font-size: 29px;
+        font-weight: bold;
+    }
+
+    .quick {
+        float: left;
+        width: 90;
+        height: 95;
+        margin: 5px;
+    }
+
+    .clearfix {
+        overflow: auto;
+    }
+
+    .img {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 95px;
+        height: 95px;
+
+    }
+
+    * {
+        padding: auto;
+        margin: auto;
+        text-align: center;
+    }
+</style>
+
+<body>
+    <ons-page>
+        <ons-toolbar style="background-color:	LightCoral">
+
+            <div class="left">
+                <ons-icon size="45px" onclick="index()" icon="angle-left">
+                </ons-icon>
+            </div>
+        </ons-toolbar>
+        <ons-page>
+
+            <div class="bg">
+                <div class="bg1">
+                    <div class="clearfix">
+                        <img class="quick" src="D:\Project\project\รูป\brackets.png">
+                        <br><br>
+                        <div class="div">เทียนทัตนคลินิก</div>
+
+                    </div>
+                    <hr>
+                    <br>
+                    <div class="container">
+                        <p>กรุณาเลือกเวลา</p>
+                        <div>
+                            <select id="show" class='mdb-select md-form'></select>
+                        </div>
+                    </div>
+
+                    <div class="container">
+
+                        <body>
+
+
+                            <script> /// เก็บเวลาไว้ในlocal
+
+                                function getTime() {
+                                    var time_1 = document.getElementById("show").value;
+                                    var time = localStorage.setItem('time', time_1)
+                                    var getLocalTime = localStorage.getItem("time");
+                                    console.log("LocalTime::" + getLocalTime);
+                                }
+
+                                createOptions();
+
+                                function createOptions() {
+                                    var arrTimeMF = ["17:00-17:45", "17:45-18:30", "18:30-19:15", "19:15-20:00", "20:00-20:45"];
+                                    var arrTimeSS = ["9:00-9:45", "9:45-10:30", "10:30-11:15", "11:15-12:00", "13:00-13:45","13:45-14:30", "14:30-15:15", "15:15-16:00", "16:00-16:45", "16:45-17:30"]
+                                    var index = localStorage.getItem("Index");
+                                    var getLocalDate = localStorage.getItem("date");
+                                    var forDeletion = [];
+                                    var arrAfterDel = [];
+
+                                    ////ดึงข้อมูจากดาต้าเบส
+                                    var settings1 = {
+                                        "async": true,
+                                        "crossDomain": true,
+                                        "url": "http://192.168.137.158:8080/bookq/",
+                                        "method": "GET",
+                                        "headers": {
+                                            "cache-control": "no-cache",
+                                            "Postman-Token": "4d85d90c-90d7-48a1-bac6-a19b0c736293"
+                                        }
+                                    }
+
+                                    $.ajax(settings1).done(function (response) {
+                                        let loopBookq = response.data;
+
+                                        console.log("loop bookID: " + loopBookq.length);
+
+                                        for (let i = 0; i < loopBookq.length; i++) {
+                                            if (i < loopBookq.length) {
+                                                console.log(" Loop_BookId : "+i+"::"+ loopBookq[i].BookID );
+
+                                                if (getLocalDate == loopBookq[i].start) {
+                                                    console.log("testDate::" + loopBookq[i].start); //วันที่
+                                                    console.log("testTime:: " + i + "::" + loopBookq[i].Time); //เวลา
+
+
+                                                    forDeletion.push(loopBookq[i].Time);
+                                                    
+                                                }
+
+                                            }
+
+                                            var x = i;
+                                        }
+                                        ///BookID ตัวล่าสุด
+                                        var last_bookId = localStorage.setItem('last_BookID', loopBookq[x].BookID)
+                                        var getLocal_Last_BookID = localStorage.getItem("last_BookID");
+                                        console.log("Local_Last_BookID::" + getLocal_Last_BookID); //ไอดีล่าสุด
+
+
+
+                                        ////เสาร์-อาทิตย์
+                                        var day = localStorage.getItem("day")
+                                        if (day == "Sun" || day == "Sat") {
+                                            document.getElementById("show").innerHTML += "<option value='' disabled selected>เลือก</option>";
+                                            console.log("เวลาที่ไม่ต้องแสดง :" + forDeletion);
+                                            console.log(arrTimeSS);
+                                            
+                                            /// คำสั่งลบของเสาร์-อาทิตย์ arrimeSS
+                                            arrAfterDel = arrTimeSS.filter(function (value, index, arr) {
+                                                if (!forDeletion.includes(value)) {
+                                                    return value;
+                                                }
+                                            })
+                                            for (let n = 0; n < arrAfterDel.length; n++) {
+                                
+                                                document.getElementById("show").innerHTML += "<option value=" + arrAfterDel[n] + ">" + arrAfterDel[n] + "</option>";
+                                            }
+
+
+
+
+                                            /// จันทร์-ศุกร์
+                                        } else {
+                                            document.getElementById("show").innerHTML += "<option value='' disabled selected>เลือก</option>";
+                                            console.log("เวลาที่ไม่ต้องแสดง :" + forDeletion);
+                                            console.log(arrTimeMF);
+                                            
+
+                                            ///คำสังลบของจันทร์-ศุกร์ arrimeMF
+                                            arrAfterDel = arrTimeMF.filter(function (value, index, arr) {
+                                                if (!forDeletion.includes(value)) {
+                                                    return value;
+
+                                                }
+
+                                            })
+                                            for (let n = 0; n < arrAfterDel.length; n++) {
+
+                                                document.getElementById("show").innerHTML += "<option value" + arrAfterDel[n] + ">" + arrAfterDel[n] + "</option>";
+                                                
+
+
+                                            }
+
+                                        }
+
+
+                                    });
+
+
+
+
+                                }
+
+                            </script>
+
+                        </body>
+
+                    </div>
+                    <br>
+                    <form>
+                        <a href="selectq.html" class="btn btn-outline-secondary" onclick="getTime()"
+                            role="button">ถัดไป</a>
+                    </form>
+                </div>
+            </div>
+        </ons-page>
+</body>
+
+<script>
+
+    function index() {
+        window.location.href = 'home.html'
+    }
+
+</script>
+
+</html>
