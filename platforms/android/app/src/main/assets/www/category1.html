@@ -55,7 +55,6 @@
         height: 95px;
 
     }
-    
 </style>
 
 <body>
@@ -82,10 +81,10 @@
                     <p style="text-align: center; margin-top: 10px;">เลือกใช้บริการ</p>
                     <!-- <p  style="text-align: center; margin-top: 10px;" id="type" value="ทันตกรรมพื้นฐาน">ทันตกรรมพื้นฐาน</p> -->
 
-                   
-                        <input class="form-control" style="text-align: center;"  type="text" name="" id="type1" value="ทันตกรรมพื้นฐาน"
-                            disabled></input>
-                    
+
+                    <input class="form-control" style="text-align: center;" type="text" name="" id="type1"
+                        value="ทันตกรรมพื้นฐาน" disabled></input>
+
 
                     <br>
 
@@ -109,7 +108,7 @@
 </body>
 <script>
     function qq() {
-        window.location.href = 'confirm.html'
+        window.location.href = 'home.html'
 
     }
 
@@ -120,31 +119,39 @@
         var cate_1 = document.getElementById("cate1").value;
         var category = localStorage.setItem('category1', cate_1)
 
-        var status = localStorage.setItem('status', 1)
+        var status = localStorage.setItem('status', 0)
+        var alert = localStorage.setItem('alert', 0)
 
         var getLocalDate = localStorage.getItem("date");
         var getLocalTime = localStorage.getItem("time");
         var getLocalCategory1 = localStorage.getItem("category1");
+
         var getLocalStatus = localStorage.getItem("status");
-        var getLocalCusID = localStorage.getItem("Index")
+        // var Status = parseInt(getLocalStatus);
+        var getLocalalert = localStorage.getItem("alert");
+        var getLocalCusID = localStorage.getItem("Index");
+        // var CusID = parseInt(getLocalCusID);
         var getLocalType1 = localStorage.getItem("type1");
-        var Last_BookID = localStorage.getItem("last_BookID");
-        var getLocal_Last_BookID = parseInt(Last_BookID) + 1;
+
+        // var Last_BookID = localStorage.getItem("last_BookID");
+        // var getLocal_Last_BookID = parseInt(Last_BookID) + 1;
         var settings = {
             "async": true,
             "crossDomain": true,
-            "url": "http://192.168.43.235:8080/bookq?BookID=" + getLocal_Last_BookID + "&start=" + getLocalDate + "&Time=" + getLocalTime + "&Detail=" + getLocalCategory1 + "&Status=" + getLocalStatus + "&CusID=" + getLocalCusID + "&Type=" + getLocalType1 + "&end=" + getLocalDate,
+            "url": "http://192.168.137.236:8080/book?BookID=" + null + "&start=" + getLocalDate + "&Time=" + getLocalTime + "&Detail=" + getLocalCategory1 + "&Status=" + getLocalStatus + "&Type=" + getLocalType1 + "&end=" + getLocalDate + "&alert=" + getLocalalert + "&CusID=" + getLocalCusID,
             "method": "POST",
             "headers": {
                 "Content-Type": "application/x-www-form-urlencoded",
                 "cache-control": "no-cache",
-                "Postman-Token": "8a9a2178-4caa-4638-9293-66d4c756fd1e"
+                "Postman-Token": "887c9555-fc21-47d3-b46b-6eab6cea0a65"
             },
             "data": ""
         }
 
+
         $.ajax(settings).done(function (response) {
             console.log(response);
+            //noification 
         });
         qq();
 

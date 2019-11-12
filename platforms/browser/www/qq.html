@@ -249,7 +249,7 @@
                 var settings = {
                     "async": true,
                     "crossDomain": true,
-                    "url": "http://192.168.137.158:8080/bookq",
+                    "url": "http://172.19.172.73:8080/book",
                     "method": "GET",
                     "headers": {
                         "Content-Type": "application/x-www-form-urlencoded",
@@ -273,12 +273,12 @@
                     }
 
                 });
-        function cencelBookq() {
+        function cencelbook() {
            var bookid = localStorage.getItem("bookID");
             var settings = {
                 "async": true,
                 "crossDomain": true,
-                "url": "http://192.168.137.158:8080/bookq/" + bookid,
+                "url": "http://172.19.172.73:8080/book/" + bookid,
                 "method": "DELETE",
                 "headers": {
                     "Content-Type": "application/x-www-form-urlencoded",
@@ -309,7 +309,7 @@ function gotohome() {
         </div>
         <div class="alert-dialog-footer">
           <ons-alert-dialog-button style="color:blue" onclick="hideAlertDialog()">ปิด</ons-alert-dialog-button>
-          <ons-alert-dialog-button style="color:red" onclick="cencelBookq()">ยืนยันการยกเลิก</ons-alert-dialog-button>
+          <ons-alert-dialog-button style="color:red" onclick="cencelbook()">ยืนยันการยกเลิก</ons-alert-dialog-button>
         </div>
       </ons-alert-dialog>
     </template>

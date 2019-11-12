@@ -19,7 +19,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   </body>
   <script>
-  axios.get("http://localhost:8080/bookq/" ).then(function(params) {
+  axios.get("http://localhost:8080/book/" ).then(function(params) {
       var data = params.data;
     document.getElementById("show").innerHTML = params.data.data[0].start
     for (let index = 0; index < data.length; index++) {

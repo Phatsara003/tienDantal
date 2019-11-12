@@ -2,23 +2,30 @@
 <html lang="en">
 
 <head>
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport"
+        content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://unpkg.com/onsenui/css/onsenui.css">
     <link rel="stylesheet" href="https://unpkg.com/onsenui/css/onsen-css-components.min.css">
     <script src="https://unpkg.com/onsenui/js/onsenui.min.js"></script>
+
     <script src="https://code.jquery.com/jquery-3.3.1.js"
         integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
 
-    <!-- <script src="cordova.js"></script> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
+    <script src="cordova.js"></script>
     <style>
         .bg {
 
             background-color: RGB(255, 160, 122, 0.3);
             background-repeat: no-repeat;
-            background-attachment: scroll;
-            overflow: scroll;
-            height: 690px;
+
+            height: 1000px;
         }
 
         .img {
@@ -53,114 +60,141 @@
 <body>
     <ons-page>
         <ons-toolbar style="background-color:	LightCoral">
+            <div class="left">
+                <ons-toolbar-buton>
+                    <i class="fas fa-envelope-open-text" style="margin-left: 10px;color: white; "></i>
+                </ons-toolbar-buton>
+            </div>
+            <div class="center" style="text-align: center; margin-left: -10px; color: white;"></i>Tien Dental</div>
+            <div class="right"></div>
+
         </ons-toolbar>
 
-        <ons-page>
-            <div class="bg">
-                <p>
-                    <img width="80" height="80" src="img/tooth1.png">
-                    <b id="nameSh"></b></p>
 
+        <div class="bg">
 
-                <hr>
-                <br>
-                <p style="text-align: center; margin-top: 10px;">
-
-                    วันนี้รับบริการแบบไหนดีคะ ?</p>
-                <br>
-
-                <ons-row>
-                    <ons-col style="background:white;">
-
-                        <div class="clearfix">
-                            <img class="quick" src="img/hand-gesture.png" alt="Pineapple" width="140"
-                                height="100" onclick="selectdatetime()">
-                            <div class="div">จองคิว</div>
-                        </div>
-
-
-
-
-                    </ons-col>
-                </ons-row>
-                <br>
-                <br>
-                <ons-row style="height:120px" vertical-align="center">
-                    <ons-col
-                        style="background:white; border-radius: 15px; display: block; margin-left: auto;margin-right: auto;"
-                        width="40" height="40">
-                        <p>
-                            <div>
-                                <img class=" img" onclick="dating()" src="img/dental.png">
-                            </div>
-                        </p>
-                        <p style="text-align: center; margin: 10px;">
-                            ใบนัดหมอ
-                        </p>
-                    </ons-col>
-                    <br>
-                    <ons-col
-                        style="background:white;  border-radius: 15px; display: block; margin-left: auto;margin-right: auto;"
-                        width="40" height="40">
-                        <p>
-                            <div>
-                                <img class="img" onclick="history()" src="img/dental-care.png">
-                            </div>
-                        </p>
-                        <p style="text-align: center; margin: 10px;">
-                            ประวัติการรักษา
-                        </p>
-                    </ons-col>
-                </ons-row>
-                <br>
-                <ons-row style="height:120px" vertical-align="center">
-                    <ons-col
-                        style="background:white; border-radius: 15px; display: block; margin-left: auto;margin-right: auto;"
-                        width="40" height="40">
-
-                        <p>
-                            <div>
-
-                                <img class="img" onclick="chatbot1()" src="img/conversation.png">
-                            </div>
-                        </p>
-                        <p style="text-align: center; margin: 10px;">
-                            สอบถาม
-                        </p>
-                    </ons-col>
-                   
-                    <ons-col
-                        style="background:white; border-radius: 15px; display: block; margin-left: auto;margin-right: auto;"
-                        width="40" height="40">
-                        <p>
-                            <div>
-                                <img class="img" onclick="signout()" src="img/log-out.png">
-                            </div>
-                        </p>
-                        <p style="text-align: center; margin: 10px;">
-                            ออกจากระบบ
-                        </p>
-
-                    </ons-col>
-                </ons-row>
-
-        </ons-page>
-        <div class="container">
-            <h2 class="my-4"></h2>
-            <div class="row" id="shop">
+            <!-- <div class="row">
+                <div class="col-md-3"><img width="80" height="80" src="img/tooth1.png"></div>
+                <div class="col-md-9"><b id="nameSh"></b></p>
+                </div>
             </div>
+            <p> -->
 
-        </div>
+
+
+            <ons-row style="background:white; border-radius: 0px; display: block; margin-left: auto;margin-right: auto;"
+                width="40" height="40">
+
+                <ons-col>
+                    <div class="center" style="margin-left:45px; ">
+                        <img class="quick" style="margin-top: 5px;" src="img/tooth1.png" alt="Pineapple" width="60"
+                            height="60">
+                    </div>
+                </ons-col>
+                <ons-col style="height: 70px;">
+                    <div class="div">
+                        <p style="font-size: 18px; text-align: left;padding-left: 120px;padding-right: 10px"
+                            id="nameSh">
+                        </p>
+                    </div>
+                </ons-col>
+                <hr>
+
+            </ons-row>
+            <div id="showinhome"></div><br>
+            <p style="text-align: center; margin-top: 10px;">วันนี้รับบริการแบบไหนดีคะ ?</p>
+
+
+            <br>
+
+            <ons-row>
+
+                <ons-col
+                    style="background:white; border-radius: 15px; display: block; margin-left: auto;margin-right: auto;"
+                    width="95%" height="40" onclick="selectdatetime()">
+
+                    <div class="center">
+                        <img class="quick" src="img/hand-gesture.png" alt="Pineapple" width="120" height="90">
+                    </div>
+                    <div class="div" style="text-align: right;margin-left: -50px;">จองคิว</div>
+                </ons-col>
+            </ons-row>
+            <br>
+
+            <ons-row style="height:120px" vertical-align="center">
+                <ons-col
+                    style="background:white; border-radius: 15px; display: block; margin-left: auto;margin-right: auto;"
+                    width="45" height="40">
+                    <p>
+                        <div>
+                            <img class=" img" onclick="dating()" src="img/dental.png">
+                        </div>
+                    </p>
+                    <p style="text-align: center; margin: 10px;">
+                        ใบนัดหมอ
+                    </p>
+                </ons-col>
+                <br>
+                <ons-col
+                    style="background:white;  border-radius: 15px; display: block; margin-left: auto;margin-right: auto;"
+                    width="45" height="40">
+                    <p>
+                        <div>
+                            <img class="img" onclick="history()" src="img/dental-care.png">
+                        </div>
+                    </p>
+                    <p style="text-align: center; margin: 10px;">
+                        ประวัติการรักษา
+                    </p>
+                </ons-col>
+            </ons-row>
+            <br>
+            <ons-row style="height:120px" vertical-align="center">
+                <ons-col
+                    style="background:white; border-radius: 15px; display: block; margin-left: auto;margin-right: auto;"
+                    width="45" height="40">
+
+                    <p>
+                        <div>
+
+                            <img class="img" onclick="chatbot1()" src="img/conversation.png">
+                        </div>
+                    </p>
+                    <p style="text-align: center; margin: 10px;">
+                        สอบถามค่าใช้จ่าย
+                    </p>
+                </ons-col>
+
+                <ons-col
+                    style="background:white; border-radius: 15px; display: block; margin-left: auto;margin-right: auto;"
+                    width="45" height="40">
+                    <p>
+                        <div>
+                            <img class="img" onclick="signout()" src="img/log-out.png">
+                        </div>
+                    </p>
+                    <p style="text-align: center; margin: 10px;">
+                        ออกจากระบบ
+                    </p>
+
+                </ons-col>
+            </ons-row>
+
+    </ons-page>
+
 
 </body>
 
 <script>
     var index = localStorage.getItem("Index");
+    var date = localStorage.getItem("date");
+
+    console.log("DD:" + date);
 
     var settings1 = {
         "async": true,
         "crossDomain": true,
-        "url": "http://172.19.131.212:8080/book/",
+        "url": "http://172.26.252.97:8080/book/",
         "method": "GET",
         "headers": {
             "cache-control": "no-cache",
@@ -172,29 +206,217 @@
         let loopbook = response.data;
 
         console.log("loop bookID: " + loopbook.length);
-        
+
         for (let i = 0; i < loopbook.length; i++) {
-            if ( i< loopbook.length  ) {
-             //console.log(" Loop_BookId : "+i+"::"+ loopbook[i].BookID );
-             console.log(" Loop_Date : " + loopbook[i].start + "::" + loopbook[i].Time);
-                if ("date"==loopbook[i].start ) {
-                    console.log("testDate::"+loopbook[i].start+"::"+loopbook[i].Time);
-                    
+            if (i < loopbook.length) {
+                //console.log(" Loop_BookId : "+i+"::"+ loopbook[i].BookID );
+                // console.log(" Loop_Date : " + loopbook[i].start + "::" + loopbook[i].Time);
+                if (index == loopbook[i].CusID) {
+                    console.log("testDate::" + loopbook[i].start + "::" + loopbook[i].Time);
+
+                    if (date == loopbook[i].start && loopbook[i].Status == 0) {
+                        localStorage.setItem('showq', 1);
+                        console.log("d::" + loopbook[i].start + "s::" + loopbook[i].Status);
+                        var time = localStorage.getItem("time"); //เก็บเวลา
+                        console.log("time::" + time);
+
+                        var arrOrderMF = ["A001", "A002", "A003", "A004", "A005"];
+                        var arrOrderSS = ["A001", "A002", "A003", "A004", "A005",
+                            "A006", "A007", "A008", "A009", "A010"];
+
+
+                        var day = localStorage.getItem("day")
+                        console.log("day ::" + day);
+
+                        if (day == "Sun" || day == "Sat") {
+                            console.log(arrOrderSS);
+                            var timeSS1;
+                            var timeSS2;
+                            var numQ;
+                            var time2 = localStorage.getItem("time");
+                            console.log("time2::" + time2);
+
+                            switch (time2) {
+                                case time2 = "9:00-9:45":
+                                    timeSS2 = "A001";
+                                    numQ = "คิวแรก";
+                                    break;
+                                case time2 = "9:45-10:30":
+
+                                    timeSS2 = "A002";
+                                    numQ = "1 คิว";
+                                    break;
+                                case time2 = "10:30-11:15":
+
+                                    timeSS2 = "A003";
+                                    numQ = "2 คิว";
+                                    break;
+                                case time2 = "11:15-12:00":
+
+                                    timeSS2 = "A004";
+                                    numQ = "3 คิว";
+                                    break;
+                                case time2 = "13:00-13:45":
+
+                                    timeSS2 = "A005";
+                                    numQ = "4 คิว";
+                                    break;
+                                case time2 = "13:45-14:30":
+
+                                    timeSS2 = "A006";
+                                    numQ = "5 คิว";
+                                    break;
+                                case time2 = "14:30-15:15":
+
+                                    timeSS2 = "A007";
+                                    numQ = "6 คิว";
+                                    break;
+                                case time2 = "15:15-16:00":
+
+                                    timeSS2 = "A008";
+                                    numQ = "7 คิว";
+                                    break;
+                                case time2 = "16:00-16:45":
+
+                                    timeSS2 = "A009";
+                                    numQ = "8 คิว";
+                                    break;
+                                case time2 = "16:45-17:30":
+
+                                    timeSS2 = "A010";
+                                    numQ = "9 คิว";
+
+                            }
+
+                            $('#showinhome').append(
+
+                                ' <div style="height: 100px; padding: 1px 0 0 0;">' +
+                                ' <div class="card" onclick="qq()">' +
+                                ' <ons-row>' +
+                                '<div class="card__title" style="margin-left: 40px">หมายเลขคิว</div>' +
+                                '<ons-col>' +
+                                '<div class="card__title" style="margin-left: 50px">รออีก(คิว)</div>' +
+                                '</ons-col>' +
+                                '</ons-row>' +
+                                '<ons-row>' +
+                                '<ons-col>' +
+                                '<div id="order" class="clearfix" style="margin-left: 40px; margin-top: auto; font-size: 30px; border-right: 3px solid LightCoral;">' + timeSS2 +
+                                '</div>' +
+                                '</ons-col>' +
+                                ' <ons-col>' +
+                                '<div id="numQ" class="card__title" style="margin-left: 40px; margin-top: auto; font-size: 30px;">' + numQ +
+                                '  </div>' +
+                                '</ons-col>' +
+                                ' </ons-row>' +
+                                ' </div>' +
+                                '</div>'
+
+
+                            )
+
+                        } else {
+                            console.log(arrOrderMF);
+                            var timeSS1;
+                            var timeSS2;
+                            var numQ;
+                            var time2 = localStorage.getItem("time");
+                            switch (time2) {
+                                case time2 = "17:00-17:45":
+                                    timeSS2 = "A001";
+                                    numQ = "คิวแรก";
+                                    break;
+                                case time2 = "17:45-18:30":
+
+                                    timeSS2 = "A002";
+                                    numQ = "1 คิว";
+                                    break;
+                                case time2 = "18:30-19:15":
+
+                                    timeSS2 = "A003";
+                                    numQ = "2 คิว";
+                                    break;
+                                case time2 = "19:15-20:00":
+                                    timeSS2 = "A004";
+                                    numQ = "3 คิว";
+                                    break;
+                                case time2 = "20:00-20:45":
+                                    timeSS2 = "A005";
+                                    numQ = "4 คิว";
+
+
+                            }
+
+
+                            $('#showinhome').append(
+
+                                ' <div style="height: 100px; padding: 1px 0 0 0;">' +
+                                ' <div class="card" onclick="qq()">' +
+                                ' <ons-row>' +
+                                '<div class="card__title" style="margin-left: 40px">หมายเลขคิวของคุณ</div>' +
+                                '<ons-col>' +
+                                '<div class="card__title" style="margin-left: 50px">รออีก(คิว)</div>' +
+                                '</ons-col>' +
+                                '</ons-row>' +
+                                '<ons-row>' +
+                                '<ons-col>' +
+                                '<div id="order" class="clearfix" style="margin-left: 40px; margin-top: auto; font-size: 30px; border-right: 3px solid LightCoral;">' + timeSS2 +
+                                '</div>' +
+                                '</ons-col>' +
+                                ' <ons-col>' +
+                                '<div id="numQ" class="card__title" style="margin-left: 40px; margin-top: auto; font-size: 30px;">' + numQ +
+                                '  </div>' +
+                                '</ons-col>' +
+                                ' </ons-row>' +
+                                ' </div>' +
+                                '</div>'
+
+
+                            )
+
+
+                        }
+
+                    }
+
+
+                }
+                let inOneMin = new Date();
+                inOneMin.setMinutes(inOneMin.getMinutes() + 1);
+                let id = new Date().getMilliseconds();
+                var d = new Date();
+                var days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+                dformat = [days[d.getDay() - 1]].join(',') +
+                    [d.getFullYear(),
+                    d.getMonth() + 1,
+                    d.getDate()
+                    ].join('-');
+                console.log(" Datefvfcvc :" + dformat);
+                var purpose = loopbook[i].start 
+                var  result = purpose.replace(/,/g, ""); 
+                 console.log("result"+result);
+                 
+
+                if ( result == dformat ) {
+                    cordova.plugins.notification.local.schedule([
+                  {
+                    id: id,
+                    title: "อีบ้า",
+                    text: "ได้สักทีเหอะ!!!!!",
+                    //badge: n
+                    summary: 'แจ้งเตือนใหม่'
+                  }
+                ])
+
                 }
             }
-        //   var x = i;
-        }
-            // var last_bookId = localStorage.setItem('last_BookID', loopbook[x].BookID)
-            //                 var getLocal_Last_BookID = localStorage.getItem("last_BookID");
-            //                 console.log("Local_Last_BookID::" + getLocal_Last_BookID);
-        
 
+        }
 
     });
     var settings = {
         "async": true,
         "crossDomain": true,
-        "url": "http://172.19.131.212:8080/customer/",
+        "url": "http://172.26.252.97:8080/customer/",
         "method": "GET",
         "headers": {
             "cache-control": "no-cache",
@@ -212,26 +434,54 @@
         for (let i = 0; i < loop.length; i++) {
 
             console.log(" Loop_Fname : " + loop[i].Fname);
-            
+
             if (index == loop[i].CusID) {
-                $("#nameSh").html("สวัสดีค่ะ คุณ" + loop[i].Fname);
+                $("#nameSh").html("" + "สวัสดีคุณ :" + " " + loop[i].Fname + " " + loop[i].Lname);
                 console.log("Fname : " + loop[i].Fname);
+
             }
         }
 
 
 
     });
+
+    // คอนเฟิม
+
+    // var getLocalStatus = localStorage.getItem("status");
+    // var getLocalCusID = localStorage.getItem("Index");
+    // console.log(getLocalStatus, getLocalCusID);
+
+
+
+
+
 </script>
 
 
 
 <script>
+
+
+
+
     function chatbot1() {
         window.location.href = 'chatbot1.html'
     }
     function selectdatetime() {
-        window.location.href = 'selectdate.html'
+
+        var a = localStorage.getItem("showq");
+        if (a == 1) {
+            // window.location.href = 'home.html'
+            ons.notification.toast('คุณมีรายการจองแล้วค่ะ!', {
+                timeout: 2000
+            });
+
+
+        } else {
+            window.location.href = 'selectdate.html'
+        }
+
     }
     function history() {
         window.location.href = 'history.html'
@@ -242,6 +492,9 @@
     function signout() {
         window.location.href = 'signout.html'
         localStorage.clear("index");
+    }
+    function qq() {
+        window.location.href = 'qq.html'
     }
 </script>
 

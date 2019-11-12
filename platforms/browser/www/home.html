@@ -160,7 +160,7 @@
     var settings1 = {
         "async": true,
         "crossDomain": true,
-        "url": "http://192.168.137.158:8080/bookq/",
+        "url": "http://172.19.172.73:8080/book/",
         "method": "GET",
         "headers": {
             "cache-control": "no-cache",
@@ -169,24 +169,24 @@
     }
 
     $.ajax(settings1).done(function (response) {
-        let loopBookq = response.data;
+        let loopbook = response.data;
 
-        console.log("loop bookID: " + loopBookq.length);
+        console.log("loop bookID: " + loopbook.length);
         
-        for (let i = 0; i < loopBookq.length; i++) {
-            if ( i< loopBookq.length  ) {
-             //console.log(" Loop_BookId : "+i+"::"+ loopBookq[i].BookID );
-             console.log(" Loop_Date : " + loopBookq[i].start + "::" + loopBookq[i].Time);
-                if ("date"==loopBookq[i].start ) {
-                    console.log("testDate::"+loopBookq[i].start+"::"+loopBookq[i].Time);
+        for (let i = 0; i < loopbook.length; i++) {
+            if ( i< loopbook.length  ) {
+             //console.log(" Loop_BookId : "+i+"::"+ loopbook[i].BookID );
+             console.log(" Loop_Date : " + loopbook[i].start + "::" + loopbook[i].Time);
+                if ("date"==loopbook[i].start ) {
+                    console.log("testDate::"+loopbook[i].start+"::"+loopbook[i].Time);
                     
                 }
             }
-          var x = i;
+        //   var x = i;
         }
-            var last_bookId = localStorage.setItem('last_BookID', loopBookq[x].BookID)
-                            var getLocal_Last_BookID = localStorage.getItem("last_BookID");
-                            console.log("Local_Last_BookID::" + getLocal_Last_BookID);
+            // var last_bookId = localStorage.setItem('last_BookID', loopbook[x].BookID)
+            //                 var getLocal_Last_BookID = localStorage.getItem("last_BookID");
+            //                 console.log("Local_Last_BookID::" + getLocal_Last_BookID);
         
 
 
@@ -194,7 +194,7 @@
     var settings = {
         "async": true,
         "crossDomain": true,
-        "url": "http://192.168.137.158:8080/customer/",
+        "url": "http://172.19.172.73:8080/customer/",
         "method": "GET",
         "headers": {
             "cache-control": "no-cache",

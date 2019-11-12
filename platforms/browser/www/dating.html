@@ -96,38 +96,37 @@
     var settings = {
         "async": true,
         "crossDomain": true,
-        "url": "http://192.168.137.158:8080/bookq",
+        "url": "http://172.19.172.73:8080/book",
         "method": "GET",
         "headers": {
             "Content-Type": "application/x-www-form-urlencoded",
             "cache-control": "no-cache",
-            "Postman-Token": "245e85de-d347-4c15-9061-ffe63ea8c51c"
+            "Postman-Token": "7beffd31-3e5f-4d18-be90-1b46ee489568"
         }
     }
-
     $.ajax(settings).done(function (response) {
         console.log(response);
         let loop = response.data;
         // console.log(loop.length);
-        var html ="";
+        var html = "";
         for (let j = 0; j < loop.length; j++) {
 
             if (getItemCus == loop[j].CusID) {
                 console.log(" Loop_Fname 1: " + loop[j].BookID);
 
-                    $('#show').append(
-                        '<ons-row >'+
-                       '<ons-col style="background:white; border-radius: 10px; display: block; margin: 10px;">'+
-                            '<div id="displaybox"></div>'+
-                            '<div class="clearfix">'+
-                                '<p><img class="quick" src="img/health-report.png" width="50"'+
-                                        'height="50">'+
-                                     "วันที่ : " + loop[j].start + '<br>' + "ประเภท : " + loop[j].Type + '<br>' + "รายละเอียด : " + loop[j].Detail + '</p>'+
-                            '</div>'+
-                        '</ons-col>'+
+                $('#show').append(
+                    '<ons-row >' +
+                    '<ons-col style="background:white; border-radius: 10px; display: block; margin: 10px;">' +
+                    '<div id="displaybox"></div>' +
+                    '<div class="clearfix">' +
+                    '<p><img class="quick" src="img/health-report.png" width="50"' +
+                    'height="50">' +
+                    "วันที่ : " + loop[j].start + '<br>' + "ประเภท : " + loop[j].Type + '<br>' + "รายละเอียด : " + loop[j].Detail + '</p>' +
+                    '</div>' +
+                    '</ons-col>' +
                     '</ons-row>'
-                    )
-                               
+                )
+
             }
         }
 
@@ -137,7 +136,7 @@
     var settings1 = {
         "async": true,
         "crossDomain": true,
-        "url": "http://192.168.137.158:8080/customer",
+        "url": "http://172.19.172.73:8080/customer",
         "method": "GET",
         "headers": {
             "Content-Type": "application/x-www-form-urlencoded",

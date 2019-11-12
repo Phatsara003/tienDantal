@@ -114,15 +114,13 @@
                     <ons-col
                         style="background:white; border-radius: 15px; display: block; margin-left: auto;margin-right: auto;"
                         width="40" height="40">
-
                         <p>
                             <div>
-
-                                <img class="img" onclick="calendar()" src="img/calendar.png">
+                                <img class=" img" onclick="dating()" src="img/dental.png">
                             </div>
                         </p>
                         <p style="text-align: center; margin: 10px;">
-                            ปฏิทินหมอ
+                            ใบนัดหมอ
                         </p>
                     </ons-col>
                     <br>
@@ -144,28 +142,32 @@
                     <ons-col
                         style="background:white; border-radius: 15px; display: block; margin-left: auto;margin-right: auto;"
                         width="40" height="40">
-              <p>
-                <div>
-                  <img class=" img" onclick="dating()" src="img/dental.png">
-            </div>
-            </p>
-            <p style="text-align: center; margin: 10px;">
-                ใบนัดหมอ
-            </p>
-            </ons-col>
-            <ons-col
-                style="background:white; border-radius: 15px; display: block; margin-left: auto;margin-right: auto;"
-                width="40" height="40">
-                <p>
-                    <div>
-                        <img class="img" onclick="signout()" src="img/log-out.png">
-                    </div>
-                </p>
-                <p style="text-align: center; margin: 10px;">
-                    ออกจากระบบ
-                </p>
-            </ons-col>
-            </ons-row>
+
+                        <p>
+                            <div>
+
+                                <img class="img" onclick="chatbot1()" src="img/conversation.png">
+                            </div>
+                        </p>
+                        <p style="text-align: center; margin: 10px;">
+                            สอบถาม
+                        </p>
+                    </ons-col>
+                   
+                    <ons-col
+                        style="background:white; border-radius: 15px; display: block; margin-left: auto;margin-right: auto;"
+                        width="40" height="40">
+                        <p>
+                            <div>
+                                <img class="img" onclick="signout()" src="img/log-out.png">
+                            </div>
+                        </p>
+                        <p style="text-align: center; margin: 10px;">
+                            ออกจากระบบ
+                        </p>
+
+                    </ons-col>
+                </ons-row>
 
 
             
@@ -173,6 +175,10 @@
 
         </ons-page>
         <script>
+        //     var getLocalStatus = localStorage.getItem("status");
+        // var getLocalCusID = localStorage.getItem("Index");
+        // console.log(getLocalStatus,getLocalCusID);
+        
                
                 var time = localStorage.getItem("time"); //เก็บเวลา
                 console.log("time::" + time);
@@ -180,6 +186,7 @@
                 var arrOrderMF = ["A001", "A002", "A003", "A004", "A005"];
                 var arrOrderSS = ["A001", "A002", "A003", "A004", "A005",
                     "A006", "A007", "A008", "A009", "A010"];
+
 
                 var day = localStorage.getItem("day")
                 if (day == "Sun" || day == "Sat") {

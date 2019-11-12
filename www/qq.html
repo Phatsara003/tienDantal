@@ -249,7 +249,7 @@
                 var settings = {
                     "async": true,
                     "crossDomain": true,
-                    "url": "http://172.19.131.212:8080/book",
+                    "url": "http://172.26.252.97:8080/book",
                     "method": "GET",
                     "headers": {
                         "Content-Type": "application/x-www-form-urlencoded",
@@ -274,11 +274,12 @@
 
                 });
         function cencelbook() {
+            localStorage.setItem('showq',0);
            var bookid = localStorage.getItem("bookID");
             var settings = {
                 "async": true,
                 "crossDomain": true,
-                "url": "http://172.19.131.212:8080/book/" + bookid,
+                "url": "http://172.26.252.97:8080/book/" + bookid,
                 "method": "DELETE",
                 "headers": {
                     "Content-Type": "application/x-www-form-urlencoded",
@@ -345,9 +346,9 @@ var hideAlertDialog = function() {
 };
 
 
-    // function confirm() {
-    //     window.location.href = 'confirm.html'
-    // }
+    function confirm() {
+        window.location.href = 'home.html'
+    }
     // function cancle() {
     //     window.location.href = 'cancle.html'
     // }

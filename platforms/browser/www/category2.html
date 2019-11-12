@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://unpkg.com/onsenui/css/onsenui.css">
@@ -80,7 +80,8 @@
                     <br>
                     <p style="text-align: center; margin-top: 10px;">เลือกใช้บริการ</p>
 
-                    <input class="form-control" style="text-align: center;" type="text" name="" id="type2" value="ทันตกรรมความงาม" disabled>
+                    <input class="form-control" style="text-align: center;" type="text" name="" id="type2"
+                        value="ทันตกรรมความงาม" disabled>
 
                     <br>
                     <select id="cate2" class="select-input select-input--material" style="display: block;
@@ -111,7 +112,7 @@
                         }
                     </script> -->
 
-                   
+
                 </div>
                 <ons-button style="background: SALMON;" modifier="large" onclick="queue()">จองคิว</ons-button>
             </div>
@@ -128,28 +129,28 @@
 
         var cate_2 = document.getElementById("cate2").value;
         var category = localStorage.setItem('category2', cate_2)
-       
 
-        var status = localStorage.setItem('status', 1)
+
+        var status = localStorage.setItem('status', 0)
 
         var getLocalDate = localStorage.getItem("date");
         var getLocalTime = localStorage.getItem("time");
         var getLocalCategory2 = localStorage.getItem("category2");
         var getLocalStatus = localStorage.getItem("status");
-        var getLocalCusID = localStorage.getItem("Index")
+        var getLocalCusID = localStorage.getItem("Index");
         var getLocalType2 = localStorage.getItem("type2");
-        var Last_BookID = localStorage.getItem("last_BookID");
-        var getLocal_Last_BookID = parseInt(Last_BookID) + 1;
+        // var Last_BookID = localStorage.getItem("last_BookID");
+        // var getLocal_Last_BookID = parseInt(Last_BookID) + 1;
 
         var settings = {
             "async": true,
             "crossDomain": true,
-            "url": "http://192.168.137.158:8080/bookq?BookID=" + getLocal_Last_BookID + "&start=" + getLocalDate + "&Time=" + getLocalTime + "&Detail=" + getLocalCategory2 + "&Status=" + getLocalStatus + "&CusID=" + getLocalCusID + "&Type=" + getLocalType2+ "&end=" + getLocalDate,
+            "url": "http://172.19.172.73:8080/book?BookID=" + null + "&start=" + getLocalDate + "&Time=" + getLocalTime + "&Detail=" + getLocalCategory1 + "&Status=" + getLocalStatus + "&Type=" + getLocalType1 + "&end=" + getLocalDate + "&CusID=" + getLocalCusID,
             "method": "POST",
             "headers": {
                 "Content-Type": "application/x-www-form-urlencoded",
                 "cache-control": "no-cache",
-                "Postman-Token": "8a9a2178-4caa-4638-9293-66d4c756fd1e"
+                "Postman-Token": "be3c7948-a89e-49d8-b27a-78ca24647e7c"
             },
             "data": ""
         }

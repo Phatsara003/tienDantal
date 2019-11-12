@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- เทสnotification  -->
+
+        <!-- <button onclick="myFunction()">notification</button>  -->
+        <button onclick="testnoti()">noti</button>
+        </div>
+
+        <script>
+
+            //  function myFunction() {
+            //     // setInterval(function() {
+            //   var d = new Date();
+            //                 var days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+            //                 dformat = [days[d.getDay() - 1]].join(',') +
+            //                     [d.getFullYear(),
+            //                     d.getMonth() + 1,
+            //                     d.getDate()
+            //                     ].join('-');
+            //                 console.log(" Date :" + dformat);
+
+
+            //                 cordova.plugins.notification.local.schedule({
+            //                     title: 'เอ้มันบ้า ',
+            //                     text: 'Thats pretty easy...',
+            //                     smallIcon: 'res://calendar',
+            //                     icon: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTzfXKe6Yfjr6rCtR6cMPJB8CqMAYWECDtDqH-eMnerHHuXv9egrw',
+            //                     foreground: true
+            //                 });
+
+            //             // }, 5000);
+
+            //  }
+
+            function testnoti() {
+                document.addEventListener('deviceready', function () {
+                }, false);
+
+                var d = new Date();
+                var days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+                dformat = [days[d.getDay() - 1]].join(',') +
+                    [d.getFullYear(),
+                    d.getMonth() + 1,
+                    d.getDate()
+                    ].join('-');
+                console.log(" RealDate :" + dformat);
+                localStorage.setItem("RealDate", dformat);
+
+                var settings = {
+                    "async": true,
+                    "crossDomain": true,
+                    "url": "http://172.26.252.97:8080/book/",
+                    "method": "GET",
+                    "headers": {
+                        "Content-Type": "application/x-www-form-urlencoded",
+                        "cache-control": "no-cache",
+                        "Postman-Token": "7beffd31-3e5f-4d18-be90-1b46ee489568"
+                    }
+                }
+                console.log(settings);
+
+
+                $.ajax(settings).done(function (response) {
+
+
+                    let loop = response.data;
+                    console.log(loop);
+                    for (let i = 0; i < loop.length; i++) {
+                        if (i < loop.length) {
+                            // console.log(" DateInData : " + loop[i].start);
+                            var start = loop[i].start.replace(/,/g, '');
+                            console.log(start);
+
+
+                            if (dformat == start) {
+                                console.log("ReadyNotification :" + dformat);
+                                cordova.plugins.notification.local.schedule({
+                                    title: 'เอ๊ะ! วันนี้คุณมีนัด',
+                                    text: 'เวลาของคุณคือ:' + dformat,
+                                    smallIcon: 'res://calendar',
+                                    icon: 'http://climberindonesia.com/assets/icon/ionicons-2.0.1/png/512/android-chat.png',
+                                    foreground: true
+
+                                });
+
+                            }
+                        }
+                    }
+                });
+            }
+
+        </script>
+
+</body>
+</html>

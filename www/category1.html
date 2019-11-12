@@ -108,7 +108,7 @@
 </body>
 <script>
     function qq() {
-        window.location.href = 'confirm.html'
+        window.location.href = 'home.html'
 
     }
 
@@ -120,15 +120,17 @@
         var category = localStorage.setItem('category1', cate_1)
 
         var status = localStorage.setItem('status', 0)
+        var alert = localStorage.setItem('alert', 0)
 
         var getLocalDate = localStorage.getItem("date");
         var getLocalTime = localStorage.getItem("time");
         var getLocalCategory1 = localStorage.getItem("category1");
 
         var getLocalStatus = localStorage.getItem("status");
-        var Status = parseInt(getLocalStatus);
+        // var Status = parseInt(getLocalStatus);
+        var getLocalalert = localStorage.getItem("alert");
         var getLocalCusID = localStorage.getItem("Index");
-        var CusID = parseInt(getLocalCusID);
+        // var CusID = parseInt(getLocalCusID);
         var getLocalType1 = localStorage.getItem("type1");
 
         // var Last_BookID = localStorage.getItem("last_BookID");
@@ -136,12 +138,12 @@
         var settings = {
             "async": true,
             "crossDomain": true,
-            "url": "http://172.19.131.212:8080/book?BookID=" + null + "&start=" + getLocalDate + "&Time=" + getLocalTime + "&Detail=" + getLocalCategory1 + "&Status=" + getLocalStatus + "&Type=" + getLocalType1 + "&end=" + getLocalDate + "&CusID=" + getLocalCusID,
+            "url": "http://172.26.252.97:8080/book?BookID=" + null + "&start=" + getLocalDate + "&Time=" + getLocalTime + "&Detail=" + getLocalCategory1 + "&Status=" + getLocalStatus + "&Type=" + getLocalType1 + "&end=" + getLocalDate + "&alert=" + getLocalalert + "&CusID=" + getLocalCusID,
             "method": "POST",
             "headers": {
                 "Content-Type": "application/x-www-form-urlencoded",
                 "cache-control": "no-cache",
-                "Postman-Token": "be3c7948-a89e-49d8-b27a-78ca24647e7c"
+                "Postman-Token": "887c9555-fc21-47d3-b46b-6eab6cea0a65"
             },
             "data": ""
         }
@@ -149,6 +151,7 @@
 
         $.ajax(settings).done(function (response) {
             console.log(response);
+            //noification 
         });
         qq();
 

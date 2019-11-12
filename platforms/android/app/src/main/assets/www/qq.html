@@ -249,7 +249,7 @@
                 var settings = {
                     "async": true,
                     "crossDomain": true,
-                    "url": "http://192.168.43.235:8080/bookq",
+                    "url": "http://192.168.137.236:8080/book",
                     "method": "GET",
                     "headers": {
                         "Content-Type": "application/x-www-form-urlencoded",
@@ -273,12 +273,13 @@
                     }
 
                 });
-        function cencelBookq() {
+        function cencelbook() {
+            localStorage.setItem('showq',0);
            var bookid = localStorage.getItem("bookID");
             var settings = {
                 "async": true,
                 "crossDomain": true,
-                "url": "http://192.168.43.235:8080/bookq/" + bookid,
+                "url": "http://192.168.137.236:8080/book/" + bookid,
                 "method": "DELETE",
                 "headers": {
                     "Content-Type": "application/x-www-form-urlencoded",
@@ -309,7 +310,7 @@ function gotohome() {
         </div>
         <div class="alert-dialog-footer">
           <ons-alert-dialog-button style="color:blue" onclick="hideAlertDialog()">ปิด</ons-alert-dialog-button>
-          <ons-alert-dialog-button style="color:red" onclick="cencelBookq()">ยืนยันการยกเลิก</ons-alert-dialog-button>
+          <ons-alert-dialog-button style="color:red" onclick="cencelbook()">ยืนยันการยกเลิก</ons-alert-dialog-button>
         </div>
       </ons-alert-dialog>
     </template>
@@ -345,9 +346,9 @@ var hideAlertDialog = function() {
 };
 
 
-    // function confirm() {
-    //     window.location.href = 'confirm.html'
-    // }
+    function confirm() {
+        window.location.href = 'home.html'
+    }
     // function cancle() {
     //     window.location.href = 'cancle.html'
     // }

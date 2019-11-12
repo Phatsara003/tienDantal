@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://unpkg.com/onsenui/css/onsenui.css">
@@ -80,7 +80,8 @@
                     <br>
                     <p style="text-align: center; margin-top: 10px;">เลือกใช้บริการ</p>
 
-                    <input class="form-control" style="text-align: center;" type="text" name="" id="type6" value="ทันตกรรมอื่นๆ" disabled>
+                    <input class="form-control" style="text-align: center;" type="text" name="" id="type6"
+                        value="ทันตกรรมอื่นๆ" disabled>
 
                     <br>
                     <select id="cate6" class="select-input select-input--material" style="display: block;
@@ -100,7 +101,7 @@
 </body>
 <script>
     function qq() {
-        window.location.href = 'confirm.html'
+        window.location.href = 'home.html'
     }
 
     function queue() {
@@ -108,33 +109,35 @@
         var type_6 = document.getElementById("type6").value;
         var type6 = localStorage.setItem('type6', type_6)
 
-        var cate_6 = document.getElementById("cate6").value;   
+        var cate_6 = document.getElementById("cate6").value;
         var category = localStorage.setItem('category6', cate_6)
 
 
-        var status = localStorage.setItem('status', 1)
-
+        var status = localStorage.setItem('status', 0)
+        var alert = localStorage.setItem('alert', 0)
         var getLocalDate = localStorage.getItem("date");
         var getLocalTime = localStorage.getItem("time");
         var getLocalCategory6 = localStorage.getItem("category6");
         var getLocalStatus = localStorage.getItem("status");
+        var getLocalalert = localStorage.getItem("alert");
         var getLocalCusID = localStorage.getItem("Index")
         var getLocalType6 = localStorage.getItem("type6");
-        var Last_BookID = localStorage.getItem("last_BookID");
-        var getLocal_Last_BookID = parseInt(Last_BookID) + 1;
+        // var Last_BookID = localStorage.getItem("last_BookID");
+        // var getLocal_Last_BookID = parseInt(Last_BookID) + 1;
 
         var settings = {
             "async": true,
             "crossDomain": true,
-            "url": "http://192.168.43.235:8080/bookq?BookID=" + getLocal_Last_BookID + "&start=" + getLocalDate + "&Time=" + getLocalTime + "&Detail=" + getLocalCategory6 + "&Status=" + getLocalStatus + "&CusID=" + getLocalCusID + "&Type=" + getLocalType6+ "&end=" + getLocalDate,
+            "url": "http://192.168.137.236:8080/book?BookID=" + null + "&start=" + getLocalDate + "&Time=" + getLocalTime + "&Detail=" + getLocalCategory6 + "&Status=" + getLocalStatus + "&Type=" + getLocalType6 + "&end=" + getLocalDate + "&alert=" + getLocalalert + "&CusID=" + getLocalCusID,
             "method": "POST",
-            "headers": {
-                "Content-Type": "application/x-www-form-urlencoded",
-                "cache-control": "no-cache",
-                "Postman-Token": "8a9a2178-4caa-4638-9293-66d4c756fd1e"
-            },
-            "data": ""
-        }
+  "headers": {
+    "Content-Type": "application/x-www-form-urlencoded",
+    "cache-control": "no-cache",
+    "Postman-Token": "887c9555-fc21-47d3-b46b-6eab6cea0a65"
+  },
+  "data": ""
+}
+
 
         $.ajax(settings).done(function (response) {
             console.log(response);
