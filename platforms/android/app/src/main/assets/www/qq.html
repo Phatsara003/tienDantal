@@ -20,6 +20,9 @@
             background-repeat: no-repeat;
             background-attachment: scroll;
             overflow: scroll;
+            display: block;
+            
+            height: 580px;
         }
     
         .bg1 {
@@ -27,7 +30,7 @@
             border-radius: 30px;
             display: block;
             margin: 15px;
-            height: 615px;
+            height: 500px;
     
         }
     
@@ -87,10 +90,10 @@
         }
     
         .quick1 {
-            float: left;
+            
             width: 25px;
             height: 25px;
-            margin: 15px;
+            
         }
     
         .clearfix {
@@ -98,8 +101,8 @@
         }
     
         .img {
-            width: 25px;
-            height: 25px;
+            width: 10px;
+            height: 10px;
     
         }
     </style>
@@ -130,38 +133,38 @@
 
                     <ons-row>
                         <ons-col>
-                            <div class="clearfix">
-                                <img class="quick1" src="img/tooth7.png"> <br>
-                                <div style="color:black" id="date"></div>
+                            <div class="row">
+                                <img  class="quick1" src="img/tooth7.png"> <br>
+                                <div  style="color:black; margin-left: 3px;" id="date"></div>
                             </div>
                         </ons-col>
 
 
                         <ons-col>
-                            <div class="clearfix" style="margin-left:50px">
-                                <img class="quick1" src="img/medical.png"> <br>
-                                <div style="color: black" id="time"></div>
+                            <div class="row" >
+                                <img class="quick1 " src="img/medical.png"> <br>
+                                <div style="color: black; margin-left: 3px;" id="time"></div>
                             </div>
                         </ons-col>
                     </ons-row>
 
-                    <p style="text-align: center; margin-top: 10px; color: RGB(0, 0, 0, 0.8); font-size: 18px">
+                    <!-- <p style="text-align: center; margin-top: 10px; color: RGB(0, 0, 0, 0.8); font-size: 18px">
 
-                        เหลืออีก</p>
+                        เหลืออีก</p> -->
                     <br>
                     <div class="progress-bar progress-bar--material progress-bar--indeterminate">
                     </div>
                     <br><br>
-                    <div id="numQ" style="text-indent: 15px; text-align: center; font-size: 90px;color: RGB(0, 0, 0, 0.6);
+                    <div id="numQ" style="text-indent: 5px; text-align: center; font-size: 70px;color: RGB(0, 0, 0, 0.6);
                             font-weight: bold;"></div>
                     <br><br>
                     <br>
-                    <div style="border-bottom:#999999 1.5px dotted;"></div><br>
+                    <!-- <div style="border-bottom:#999999 1.5px dotted;"></div><br> -->
 
                    
-                    <ons-button style="background: #00bcd5;"  modifier="large" onclick="createAlertDialog()">ยกเลิกคิว</ons-button>
-
+                    
                 </div>
+<ons-button style="background: #00bcd5; "  modifier="large" onclick="createAlertDialog()">ยกเลิกคิว</ons-button>
 
 
             </div>

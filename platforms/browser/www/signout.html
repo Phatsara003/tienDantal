@@ -5,37 +5,43 @@
     <link rel="stylesheet" href="https://unpkg.com/onsenui/css/onsen-css-components.min.css">
     <script src="https://unpkg.com/onsenui/js/onsenui.min.js"></script>
     <script src="cordova.js"></script>
+     <!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 </head>
 <style>
-    .bg {
-        background-color: RGB(255, 160, 122, 0.3);
-        background-repeat: no-repeat;
-        background-attachment: scroll;
-        overflow: scroll;
-        height: 743px;
-    }
-.img {
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
-        width: 350px;
-        height: 370px;
-
-    }
-</style>
+        .bg {
+            background: #c9f3f8d2;
+            background-repeat: no-repeat;
+            background-attachment: scroll;
+            overflow: scroll;
+            height: 743px;
+        }
+    .img {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 350px;
+            height: 370px;
+    
+        }
+    </style>
 <body>
     <ons-page>
             <div class="bg">
         <div class="container">
                 <div>
-                        <img class="img" src="img/logo.png">
+                        <img class="img" src="img/banner.png">
                     </div>
             <div class="row">
                 <div class="col">
                 <div style="text-align: center; margin-top: 50px;">
                     
                     <br>
-                    <ons-button style="background: #B22222" modifier="medium" onclick="signout()" >SIGN OUT</ons-button>
+                    <ons-button style="background: #B22222" modifier="medium" onclick="signout()" >ออกจากระบบ</ons-button>
                 </div>
             </div>
         </div>

@@ -17,62 +17,67 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 
     <script src="cordova.js"></script>
     <style>
-            .bg {
-    
-                background: #c9f3f8d2;
-                background-repeat: no-repeat;
-    
-                height: 1000px;
-            }
-    
-            .img {
-                display: block;
-                margin-left: auto;
-                margin-right: auto;
-                width: 50px;
-                height: 50px;
-    
-            }
-    
-            .quick {
-                float: left;
-            }
-    
-            .clearfix {
-                overflow: auto;
-            }
-    
-            .div {
-                margin: 3px;
-                padding: 10px;
-                width: 380px;
-                height: 75px;
-                text-align: right;
-                font-size: 40px;
-            }
-        </style>
-    
+        .bg {
+
+            background: #c9f3f8d2;
+            background-repeat: no-repeat;
+            height: 700px;
+        }
+
+        .img {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 50px;
+            height: 50px;
+
+        }
+
+        .quick {
+            float: left;
+        }
+
+        .clearfix {
+            overflow: auto;
+        }
+
+        .div {
+            margin: 3px;
+            padding: 10px;
+            width: 380px;
+            height: 75px;
+            text-align: right;
+            font-size: 40px;
+        }
+    </style>
+
 
 </head>
 
 <body>
     <ons-page>
-            <ons-toolbar style="background: #00bcd5;">
-                    <div class="right">
-                        <ons-toolbar-buton>
-                            <!-- <i class="fas fa-envelope-open-text" style="margin-left: 10px;color: white; "></i> -->
-                            <img style="margin-top: 5px; width: 40px; height: 40px;" src="img/bell.png" alt="Pineapple"
-                                width="60" height="60">
-                    </div>
-                    </ons-toolbar-buton>
-                    </div>
-                    <div class="center" style="text-align: center; margin-left: -10px; color: white;"></i>TIEN DENTAL</div>
-                    <div class="right"></div>
-        
-                </ons-toolbar>
+        <ons-toolbar style="background: #00bcd5;">
+            <div class="right">
+                <ons-toolbar-buton>
+                    <!-- <i class="fas fa-envelope-open-text" style="margin-left: 10px;color: white; "></i> -->
+                    <img style="margin-top: 5px; width: 40px; height: 40px;" src="img/bell.png" alt="Pineapple"
+                        width="60" height="60">
+            </div>
+            </ons-toolbar-buton>
+            </div>
+            <div class="center" style="text-align: center; margin-left: -10px; color: white;"></i>TIEN DENTAL</div>
+            <div class="right"></div>
+
+        </ons-toolbar>
 
 
         <div class="bg">
@@ -90,22 +95,23 @@
                 width="40" height="40">
 
                 <ons-col>
+
                     <div class="center" style="margin-left:45px; ">
                         <img class="quick" style="margin-top: 5px;" src="img/user.png" alt="Pineapple" width="60"
                             height="60">
                     </div>
                 </ons-col>
                 <ons-col style="height: 70px;">
-                    <div class="div">
-                        <p style="font-size: 18px; text-align: left;padding-left: 120px;padding-right: 10px"
+                    <div class="div" style=width:100%>
+                        <p style="font-size: 18px; text-align: left;padding-left: 100px;padding-right: 10px; "
                             id="nameSh">
                         </p>
                     </div>
                 </ons-col>
                 <hr>
 
-            </ons-row>
-            <div id="showinhome"></div><br>
+            </ons-row> 
+            <div id="showinhome"></div><br><br>
             <p style="text-align: center; margin-top: 10px;">วันนี้รับบริการแบบไหนดีคะ ?</p>
 
 
@@ -198,274 +204,437 @@
     var settings1 = {
         "async": true,
         "crossDomain": true,
-        "url": "http://172.26.252.97:8080/book/",
+        "url": "http://172.26.252.97:8080/book",
         "method": "GET",
         "headers": {
+            "Content-Type": "application/x-www-form-urlencoded",
             "cache-control": "no-cache",
-            "Postman-Token": "4d85d90c-90d7-48a1-bac6-a19b0c736293"
+            "Postman-Token": "7beffd31-3e5f-4d18-be90-1b46ee489568"
         }
     }
 
     $.ajax(settings1).done(function (response) {
-        let loopbook = response.data;
+            let loopbook = response.data;
 
-        console.log("loop bookID: " + loopbook.length);
+            for (let i = 0; i < loopbook.length; i++) {
+                if (i < loopbook.length) {
+                    //console.log(" Loop_BookId : "+i+"::"+ loopbook[i].BookID );
+                    // console.log(" Loop_Date : " + loopbook[i].start + "::" + loopbook[i].Time);
+                    if (index == loopbook[i].CusID) {
+                        console.log("testDate(Book)::" + loopbook[i].start + "::" + loopbook[i].Time + "::" + loopbook[i].situation);
 
-        for (let i = 0; i < loopbook.length; i++) {
-            if (i < loopbook.length) {
-                //console.log(" Loop_BookId : "+i+"::"+ loopbook[i].BookID );
-                // console.log(" Loop_Date : " + loopbook[i].start + "::" + loopbook[i].Time);
-                if (index == loopbook[i].CusID) {
-                    console.log("testDate(Book)::" + loopbook[i].start + "::" + loopbook[i].Time+ "::" + loopbook[i].situation);
+                        if (date == loopbook[i].start && loopbook[i].situation == 0) {
+                            localStorage.setItem('showq', 1);
+                            console.log("d::" + loopbook[i].start + "::" + loopbook[i].Status);
+                            var time = localStorage.getItem("time"); //เก็บเวลา
+                            console.log("time::" + time);
 
-                    if (date == loopbook[i].start && loopbook[i].situation == 0 ) {
-                        localStorage.setItem('showq', 1);
-                        console.log("d::" + loopbook[i].start + "::" + loopbook[i].Status);
-                        var time = localStorage.getItem("time"); //เก็บเวลา
-                        console.log("time::" + time);
-
-                        var arrOrderMF = ["A001", "A002", "A003", "A004", "A005"];
-                        var arrOrderSS = ["A001", "A002", "A003", "A004", "A005",
-                            "A006", "A007", "A008", "A009", "A010"];
+                            var arrOrderMF = ["A001", "A002", "A003", "A004", "A005"];
+                            var arrOrderSS = ["A001", "A002", "A003", "A004", "A005",
+                                "A006", "A007", "A008", "A009", "A010"];
 
 
-                        var day = localStorage.getItem("day")
-                        console.log("day ::" + day);
+                            var day = localStorage.getItem("day")
+                            console.log("day ::" + day);
 
-                        if (day == "0" || day == "6") {
-                            console.log(arrOrderSS);
-                            var timeSS1;
-                            var timeSS2;
-                            var numQ;
-                            var time2 = localStorage.getItem("time");
-                            console.log("time2::" + time2);
+                            if (day == "0" || day == "6") {
+                                console.log(arrOrderSS);
+                                var timeSS1;
+                                var timeSS2;
+                                var numQ;
+                                var time2 = loopbook[i].Time;
+                                console.log("time2::" + time2);
 
-                            switch (time2) {
-                                case time2 = "9:00-9:45":
-                                    timeSS2 = "A001";
-                                    numQ = "คิวแรก";
-                                    break;
-                                case time2 = "9:45-10:30":
+                                switch (time2) {
+                                    case time2 = "9:00-9:45":
+                                        timeSS2 = "A001";
+                                        numQ = "คิวแรก";
+                                        break;
+                                    case time2 = "9:45-10:30":
 
-                                    timeSS2 = "A002";
-                                    numQ = "1 คิว";
-                                    break;
-                                case time2 = "10:30-11:15":
+                                        timeSS2 = "A002";
+                                        numQ = "1 คิว";
+                                        break;
+                                    case time2 = "10:30-11:15":
 
-                                    timeSS2 = "A003";
-                                    numQ = "2 คิว";
-                                    break;
-                                case time2 = "11:15-12:00":
+                                        timeSS2 = "A003";
+                                        numQ = "2 คิว";
+                                        break;
+                                    case time2 = "11:15-12:00":
 
-                                    timeSS2 = "A004";
-                                    numQ = "3 คิว";
-                                    break;
-                                case time2 = "13:00-13:45":
+                                        timeSS2 = "A004";
+                                        numQ = "3 คิว";
+                                        break;
+                                    case time2 = "13:00-13:45":
 
-                                    timeSS2 = "A005";
-                                    numQ = "4 คิว";
-                                    break;
-                                case time2 = "13:45-14:30":
+                                        timeSS2 = "A005";
+                                        numQ = "4 คิว";
+                                        break;
+                                    case time2 = "13:45-14:30":
 
-                                    timeSS2 = "A006";
-                                    numQ = "5 คิว";
-                                    break;
-                                case time2 = "14:30-15:15":
+                                        timeSS2 = "A006";
+                                        numQ = "5 คิว";
+                                        break;
+                                    case time2 = "14:30-15:15":
 
-                                    timeSS2 = "A007";
-                                    numQ = "6 คิว";
-                                    break;
-                                case time2 = "15:15-16:00":
+                                        timeSS2 = "A007";
+                                        numQ = "6 คิว";
+                                        break;
+                                    case time2 = "15:15-16:00":
 
-                                    timeSS2 = "A008";
-                                    numQ = "7 คิว";
-                                    break;
-                                case time2 = "16:00-16:45":
+                                        timeSS2 = "A008";
+                                        numQ = "7 คิว";
+                                        break;
+                                    case time2 = "16:00-16:45":
 
-                                    timeSS2 = "A009";
-                                    numQ = "8 คิว";
-                                    break;
-                                case time2 = "16:45-17:30":
+                                        timeSS2 = "A009";
+                                        numQ = "8 คิว";
+                                        break;
+                                    case time2 = "16:45-17:30":
 
-                                    timeSS2 = "A010";
-                                    numQ = "9 คิว";
+                                        timeSS2 = "A010";
+                                        numQ = "9 คิว";
+
+                                }
+
+                                $('#showinhome').append(
+
+                                    ' <div style="height: 100px; padding: 1px 0 0 0;">' +
+                                    ' <div class="card" onclick="qq()">' +
+                                    ' <ons-row>' +
+                                    '<div class="card__title" style="margin-left: 40px">หมายเลขคิว</div>' +
+                                    '<ons-col>' +
+                                    '<div class="card__title" style="margin-left: 50px">รออีก(คิว)</div>' +
+                                    '</ons-col>' +
+                                    '</ons-row>' +
+                                    '<ons-row>' +
+                                    '<ons-col>' +
+                                    '<div id="order" class="clearfix" style="margin-left: 40px; margin-top: auto; font-size: 30px; border-right: 3px solid  #00bcd5;">' + timeSS2 +
+                                    '</div>' +
+                                    '</ons-col>' +
+                                    ' <ons-col>' +
+                                    '<div id="numQ" class="card__title" style="margin-left: 40px; margin-top: auto; font-size: 30px;">' + numQ +
+                                    '  </div>' +
+                                    '</ons-col>' +
+                                    ' </ons-row>' +
+                                    ' </div>' +
+                                    '</div>'
+
+
+                                )
+
+                            } else {
+                                console.log(arrOrderMF);
+                                var timeSS1;
+                                var timeSS2;
+                                var numQ;
+                                var time2 = localStorage.getItem("time");
+                                switch (time2) {
+                                    case time2 = "17:00-17:45":
+                                        timeSS2 = "A001";
+                                        numQ = "คิวแรก";
+                                        break;
+                                    case time2 = "17:45-18:30":
+
+                                        timeSS2 = "A002";
+                                        numQ = "1 คิว";
+                                        break;
+                                    case time2 = "18:30-19:15":
+
+                                        timeSS2 = "A003";
+                                        numQ = "2 คิว";
+                                        break;
+                                    case time2 = "19:15-20:00":
+                                        timeSS2 = "A004";
+                                        numQ = "3 คิว";
+                                        break;
+                                    case time2 = "20:00-20:45":
+                                        timeSS2 = "A005";
+                                        numQ = "4 คิว";
+
+
+                                }
+
+
+                                $('#showinhome').append(
+
+                                    ' <div style="height: 100px; padding: 1px 0 0 0;">' +
+                                    ' <div class="card" onclick="qq()">' +
+                                    ' <ons-row>' +
+                                    '<div class="card__title" style="margin-left: 40px">หมายเลขคิว</div>' +
+                                    '<ons-col>' +
+                                    '<div class="card__title" style="margin-left: 50px">รออีก(คิว)</div>' +
+                                    '</ons-col>' +
+                                    '</ons-row>' +
+                                    '<ons-row>' +
+                                    '<ons-col>' +
+                                    '<div id="order" class="clearfix" style="margin-left: 40px; margin-top: auto; font-size: 30px; border-right: 3px solid  #00bcd5;">' + timeSS2 +
+                                    '</div>' +
+                                    '</ons-col>' +
+                                    ' <ons-col>' +
+                                    '<div id="numQ" class="card__title" style="margin-left: 40px; margin-top: auto; font-size: 30px;">' + numQ +
+                                    '  </div>' +
+                                    '</ons-col>' +
+                                    ' </ons-row>' +
+                                    ' </div>' +
+                                    '</div>'
+
+
+                                )
+
 
                             }
-
-                            $('#showinhome').append(
-
-                                ' <div style="height: 100px; padding: 1px 0 0 0;">' +
-                                ' <div class="card" onclick="qq()">' +
-                                ' <ons-row>' +
-                                '<div class="card__title" style="margin-left: 40px">หมายเลขคิว</div>' +
-                                '<ons-col>' +
-                                '<div class="card__title" style="margin-left: 50px">รออีก(คิว)</div>' +
-                                '</ons-col>' +
-                                '</ons-row>' +
-                                '<ons-row>' +
-                                '<ons-col>' +
-                                '<div id="order" class="clearfix" style="margin-left: 40px; margin-top: auto; font-size: 30px; border-right: 3px solid LightCoral;">' + timeSS2 +
-                                '</div>' +
-                                '</ons-col>' +
-                                ' <ons-col>' +
-                                '<div id="numQ" class="card__title" style="margin-left: 40px; margin-top: auto; font-size: 30px;">' + numQ +
-                                '  </div>' +
-                                '</ons-col>' +
-                                ' </ons-row>' +
-                                ' </div>' +
-                                '</div>'
-
-
-                            )
-
-                        } else {
-                            console.log(arrOrderMF);
-                            var timeSS1;
-                            var timeSS2;
-                            var numQ;
-                            var time2 = localStorage.getItem("time");
-                            switch (time2) {
-                                case time2 = "17:00-17:45":
-                                    timeSS2 = "A001";
-                                    numQ = "คิวแรก";
-                                    break;
-                                case time2 = "17:45-18:30":
-
-                                    timeSS2 = "A002";
-                                    numQ = "1 คิว";
-                                    break;
-                                case time2 = "18:30-19:15":
-
-                                    timeSS2 = "A003";
-                                    numQ = "2 คิว";
-                                    break;
-                                case time2 = "19:15-20:00":
-                                    timeSS2 = "A004";
-                                    numQ = "3 คิว";
-                                    break;
-                                case time2 = "20:00-20:45":
-                                    timeSS2 = "A005";
-                                    numQ = "4 คิว";
-
-
-                            }
-
-
-                            $('#showinhome').append(
-
-                                ' <div style="height: 100px; padding: 1px 0 0 0;">' +
-                                ' <div class="card" onclick="qq()">' +
-                                ' <ons-row>' +
-                                '<div class="card__title" style="margin-left: 40px">หมายเลขคิว</div>' +
-                                '<ons-col>' +
-                                '<div class="card__title" style="margin-left: 50px">รออีก(คิว)</div>' +
-                                '</ons-col>' +
-                                '</ons-row>' +
-                                '<ons-row>' +
-                                '<ons-col>' +
-                                '<div id="order" class="clearfix" style="margin-left: 40px; margin-top: auto; font-size: 30px; border-right: 3px solid LightCoral;">' + timeSS2 +
-                                '</div>' +
-                                '</ons-col>' +
-                                ' <ons-col>' +
-                                '<div id="numQ" class="card__title" style="margin-left: 40px; margin-top: auto; font-size: 30px;">' + numQ +
-                                '  </div>' +
-                                '</ons-col>' +
-                                ' </ons-row>' +
-                                ' </div>' +
-                                '</div>'
-
-
-                            )
-
 
                         }
+                        else if (index == loopbook[i].CusID && loopbook[i].situation == 0) {
+                            localStorage.setItem('showq', 1);
+                            console.log("d::" + loopbook[i].start + "::" + loopbook[i].Status);
+                            var time = loopbook[i].Time //เก็บเวลา
+                            console.log("time::" + time);
+
+                            var arrOrderMF = ["A001", "A002", "A003", "A004", "A005"];
+                            var arrOrderSS = ["A001", "A002", "A003", "A004", "A005",
+                                "A006", "A007", "A008", "A009", "A010"];
+
+
+                            var day = loopbook[i].dayofweek
+                            console.log("day ::" + day);
+
+                            if (day == "0" || day == "6") {
+                                console.log(arrOrderSS);
+                                var timeSS1;
+                                var timeSS2;
+                                var numQ;
+                                var time2 = loopbook[i].Time
+                                console.log("time2::" + time2);
+
+                                switch (time2) {
+                                    case time2 = "9:00-9:45":
+                                        timeSS2 = "A001";
+                                        numQ = "คิวแรก";
+                                        break;
+                                    case time2 = "9:45-10:30":
+
+                                        timeSS2 = "A002";
+                                        numQ = "1 คิว";
+                                        break;
+                                    case time2 = "10:30-11:15":
+
+                                        timeSS2 = "A003";
+                                        numQ = "2 คิว";
+                                        break;
+                                    case time2 = "11:15-12:00":
+
+                                        timeSS2 = "A004";
+                                        numQ = "3 คิว";
+                                        break;
+                                    case time2 = "13:00-13:45":
+
+                                        timeSS2 = "A005";
+                                        numQ = "4 คิว";
+                                        break;
+                                    case time2 = "13:45-14:30":
+
+                                        timeSS2 = "A006";
+                                        numQ = "5 คิว";
+                                        break;
+                                    case time2 = "14:30-15:15":
+
+                                        timeSS2 = "A007";
+                                        numQ = "6 คิว";
+                                        break;
+                                    case time2 = "15:15-16:00":
+
+                                        timeSS2 = "A008";
+                                        numQ = "7 คิว";
+                                        break;
+                                    case time2 = "16:00-16:45":
+
+                                        timeSS2 = "A009";
+                                        numQ = "8 คิว";
+                                        break;
+                                    case time2 = "16:45-17:30":
+
+                                        timeSS2 = "A010";
+                                        numQ = "9 คิว";
+
+                                }
+
+                                $('#showinhome').append(
+
+                                    ' <div style="height: 100px; padding: 1px 0 0 0;">' +
+                                    ' <div class="card" onclick="qq()">' +
+                                    ' <ons-row>' +
+                                    '<div class="card__title" style="margin-left: 40px">หมายเลขคิว</div>' +
+                                    '<ons-col>' +
+                                    '<div class="card__title" style="margin-left: 50px">รออีก(คิว)</div>' +
+                                    '</ons-col>' +
+                                    '</ons-row>' +
+                                    '<ons-row>' +
+                                    '<ons-col>' +
+                                    '<div id="order" class="clearfix" style="margin-left: 40px; margin-top: auto; font-size: 30px; border-right: 3px solid  #00bcd5;">' + timeSS2 +
+                                    '</div>' +
+                                    '</ons-col>' +
+                                    ' <ons-col>' +
+                                    '<div id="numQ" class="card__title" style="margin-left: 40px; margin-top: auto; font-size: 30px;">' + numQ +
+                                    '  </div>' +
+                                    '</ons-col>' +
+                                    ' </ons-row>' +
+                                    ' </div>' +
+                                    '</div>'
+
+
+                                )
+
+                            } else {
+                                console.log(arrOrderMF);
+                                var timeSS1;
+                                var timeSS2;
+                                var numQ;
+                                var time2 = loopbook[i].Time
+                                switch (time2) {
+                                    case time2 = "17:00-17:45":
+                                        timeSS2 = "A001";
+                                        numQ = "คิวแรก";
+                                        break;
+                                    case time2 = "17:45-18:30":
+
+                                        timeSS2 = "A002";
+                                        numQ = "1 คิว";
+                                        break;
+                                    case time2 = "18:30-19:15":
+
+                                        timeSS2 = "A003";
+                                        numQ = "2 คิว";
+                                        break;
+                                    case time2 = "19:15-20:00":
+                                        timeSS2 = "A004";
+                                        numQ = "3 คิว";
+                                        break;
+                                    case time2 = "20:00-20:45":
+                                        timeSS2 = "A005";
+                                        numQ = "4 คิว";
+
+
+                                }
+
+
+                                $('#showinhome').append(
+
+                                    ' <div style="height: 100px; padding: 1px 0 0 0;">' +
+                                    ' <div class="card" onclick="qq()">' +
+                                    ' <ons-row>' +
+                                    '<div class="card__title" style="margin-left: 40px">หมายเลขคิว</div>' +
+                                    '<ons-col>' +
+                                    '<div class="card__title" style="margin-left: 50px">รออีก(คิว)</div>' +
+                                    '</ons-col>' +
+                                    '</ons-row>' +
+                                    '<ons-row>' +
+                                    '<ons-col>' +
+                                    '<div id="order" class="clearfix" style="margin-left: 40px; margin-top: auto; font-size: 30px; border-right: 3px solid  #00bcd5;">' + timeSS2 +
+                                    '</div>' +
+                                    '</ons-col>' +
+                                    ' <ons-col>' +
+                                    '<div id="numQ" class="card__title" style="margin-left: 40px; margin-top: auto; font-size: 30px;">' + numQ +
+                                    '  </div>' +
+                                    '</ons-col>' +
+                                    ' </ons-row>' +
+                                    ' </div>' +
+                                    '</div>'
+
+
+                                )
+
+
+                            }
+
+                        }
+
 
                     }
+                    let inOneMin = new Date();
+                    inOneMin.setMinutes(inOneMin.getMinutes() + 1);
+                    let id = new Date().getMilliseconds();
+                    var d = new Date();
+                    var days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+                    dformat = [days[d.getDay() - 1]].join(',') +
+                        [d.getFullYear(),
+                        d.getMonth() + 1,
+                        d.getDate()
+                        ].join('-');
+                    console.log(" RealDate :" + dformat);
+                    var purpose = loopbook[i].start
+                    var result = purpose.replace(/,/g, "");
+                    console.log("ResultRealDate : " + result);
+                    // แจ้งเตือน              
 
-
-                }
-                let inOneMin = new Date();
-                inOneMin.setMinutes(inOneMin.getMinutes() + 1);
-                let id = new Date().getMilliseconds();
-                var d = new Date();
-                var days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
-                dformat = [days[d.getDay() - 1]].join(',') +
-                    [d.getFullYear(),
-                    d.getMonth() + 1,
-                    d.getDate()
-                    ].join('-');
-                console.log(" RealDate :" + dformat);
-                var purpose = loopbook[i].start
-                var result = purpose.replace(/,/g, "");
-                console.log("ResultRealDate : " + result);
-                // แจ้งเตือน              
-
-                if (result == dformat) {
-                    cordova.plugins.notification.local.schedule([
-                        {
-                            id: id,
-                            title: "อีบ้า",
-                            text: "ได้สักทีเหอะ!!!!!",
-                            //badge: n
-                            summary: 'แจ้งเตือนใหม่'
-                        }
-                    ])
-
-                }
-                if (alert == 0) {
-
-                } else {
-                    if (alert == 1) {
+                    if (result == dformat) {
                         cordova.plugins.notification.local.schedule([
                             {
                                 id: id,
-                                title: "แจ้งเตือน!!",
-                                text: "เลื่อนเวลาไปอีก 45 นาที",
+                                title: "อีบ้า",
+                                text: "ได้สักทีเหอะ!!!!!",
                                 //badge: n
                                 summary: 'แจ้งเตือนใหม่'
                             }
                         ])
-                    }
-                }
 
+                    }
+                    if (alert == 0) {
+
+                    } else {
+                        if (alert == 1) {
+                            cordova.plugins.notification.local.schedule([
+                                {
+                                    id: id,
+                                    title: "แจ้งเตือน!!",
+                                    text: "เลื่อนเวลาไปอีก 45 นาที",
+                                    //badge: n
+                                    summary: 'แจ้งเตือนใหม่'
+                                }
+                            ])
+                        }
+                    }
+
+
+                }
 
             }
 
-        }
-
-    });
-    var settings = {
-        "async": true,
+        });
+        var settings = {
+            "async": true,
         "crossDomain": true,
-        "url": "http://172.26.252.97:8080/customer/",
+        "url": "http://172.26.252.97:8080/customer",
         "method": "GET",
         "headers": {
+            "Content-Type": "application/x-www-form-urlencoded",
             "cache-control": "no-cache",
-            "Postman-Token": "4d85d90c-90d7-48a1-bac6-a19b0c736293"
+            "Postman-Token": "7ce21012-571f-46f2-b635-45e9610ecc35"
         }
-    }
+        }
 
     console.log("index : " + index);
 
-    $.ajax(settings).done(function (response) {
-        let loop = response.data;
+        $.ajax(settings).done(function (response) {
+            let loop = response.data;
 
-        console.log("loop : " + loop.length);
+            console.log("loop : " + loop.length);
 
-        for (let i = 0; i < loop.length; i++) {
+            for (let i = 0; i < loop.length; i++) {
 
-            console.log(" Loop_Fname : " + loop[i].Fname);
+                // console.log(" Loop_Fname : " + loop[i].Fname);
 
-            if (index == loop[i].CusID) {
-                $("#nameSh").html("" + "สวัสดีคุณ :" + " " + loop[i].Fname + " " + loop[i].Lname);
-                console.log("Fname : " + loop[i].Fname);
+                if (index == loop[i].CusID) {
+                    $("#nameSh").html("" + "สวัสดีคุณ :" + " " + loop[i].Fname + " " + loop[i].Lname);
+                    console.log("Fname : " + loop[i].Fname);
 
+                }
             }
-        }
 
 
 
-    });
+        });
 
     // คอนเฟิม
 
@@ -489,16 +658,16 @@
 
 
 
-    function chatbot1() {
-        window.location.href = 'chatbot1.html'
-    }
+        function chatbot1() {
+            window.location.href = 'chatbot1.html'
+        }
     function selectdatetime() {
 
         var a = localStorage.getItem("showq");
         if (a == 1) {
             // window.location.href = 'home.html'
-            ons.notification.toast('คุณมีรายการจองแล้วค่ะ!', {
-                timeout: 2000
+            ons.notification.alert('คุณมีรายการจองแล้วค่ะ!', {
+                // timeout: 2000
             });
 
 

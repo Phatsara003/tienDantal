@@ -12,30 +12,30 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 </head>
 <style>
-    .bg {
-        background-color: RGB(255, 160, 122, 0.3);
-        background-repeat: no-repeat;
-        background-attachment: scroll;
-        overflow: scroll;
-        height: 743px;
-    }
-
-    .img {
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
-        width: 350px;
-        height: 370px;
-
-    }
-</style>
+        .bg {
+            background: #c9f3f8d2;
+            background-repeat: no-repeat;
+            background-attachment: scroll;
+            overflow: scroll;
+            height: 743px;
+        }
+    
+        .img {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 350px;
+            height: 370px;
+    
+        }
+    </style>
 
 <body>
     <ons-page>
         <div class="bg">
             <div class="container">
                 <div>
-                    <img class="img" src="img/logo.png">
+                    <img class="img" src="img/banner.png">
                 </div>
                 <div class="row">
                     <div class="col">
@@ -45,7 +45,7 @@
                                 </ons-input>
                             </p>
                             <br>
-                            <ons-button style=" background: SALMON;" modifier="medium" onclick="login()">LOGIN
+                            <ons-button style="background: #00bcd5;" modifier="medium" onclick="login()">เข้าสู่ระบบ
                             </ons-button>
                         </div>
                     </div>
@@ -66,29 +66,7 @@
 
         <script>
 
-            //     function myFunction() {
-            //     // setInterval(function() {
-            //   var d = new Date();
-            //                 var days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
-            //                 dformat = [days[d.getDay() - 1]].join(',') +
-            //                     [d.getFullYear(),
-            //                     d.getMonth() + 1,
-            //                     d.getDate()
-            //                     ].join('-');
-            //                 console.log(" Date :" + dformat);
-
-
-            //                 cordova.plugins.notification.local.schedule({
-            //                     title: 'เอ้มันบ้า ',
-            //                     text: 'Thats pretty easy...',
-            //                     smallIcon: 'res://calendar',
-            //                     icon: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTzfXKe6Yfjr6rCtR6cMPJB8CqMAYWECDtDqH-eMnerHHuXv9egrw',
-            //                     foreground: true
-            //                 });
-
-            //             // }, 5000);
-
-            //  }
+           
 
             scheduleTime: String = '08:15';  //default
 
@@ -145,7 +123,7 @@ function scheduleAlarm(){
         var settings = {
             "async": true,
             "crossDomain": true,
-            "url": "http://172.26.252.977:8080/customer/",
+            "url": "http://172.26.252.97:8080/customer/",
             "method": "GET",
             "headers": {
                 "cache-control": "no-cache",

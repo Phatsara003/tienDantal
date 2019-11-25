@@ -7,58 +7,72 @@
     <link rel="stylesheet" href="https://unpkg.com/onsenui/css/onsenui.css">
     <link rel="stylesheet" href="https://unpkg.com/onsenui/css/onsen-css-components.min.css">
     <script src="https://unpkg.com/onsenui/js/onsenui.min.js"></script>
-
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 </head>
 <style>
-    .bg {
-        background-color: RGB(255, 160, 122, 0.3);
-        background-repeat: no-repeat;
-        background-attachment: scroll;
-        overflow: scroll;
-    }
-
-    .bg1 {
-        background-color: LIGHTPINK;
-        border-radius: 30px;
-        display: block;
-        margin: 15px;
-        height: auto;
-
-    }
-
-    .div {
-
-        text-indent: 22px;
-        width: 380px;
-        height: 75px;
-        font-size: 29px;
-        font-weight: bold;
-    }
-
-    .quick {
-        float: left;
-        width: 90;
-        height: 95;
-        margin: 5px;
-    }
-
-    .clearfix {
-        overflow: auto;
-    }
-
-    .img {
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
-        width: 95px;
-        height: 95px;
-
-    }
-</style>
+        .bg {
+            background: #c9f3f8d2;
+            background-repeat: no-repeat;
+            background-attachment: scroll;
+            overflow: scroll;
+            
+        }
+    
+        .bg1 {
+            background-color: white;
+            border-radius: 30px;
+            display: block;
+            margin: 15px;
+            height:auto;
+    
+        }
+    
+        .div {
+            text-indent: 3px;
+            width: 350px;
+            height: 75px;
+            font-size: 29px;
+            font-weight: bold;
+        }
+    
+        .quick {
+            float: left;
+            width: 90px;
+            height: 90px;
+            margin: 20px;
+        } 
+    
+         .clearfix {
+            
+            overflow: hidden;
+            
+            } 
+        
+    
+        .img {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 95px;
+            height: 95px;
+    
+        }
+    
+        * {
+            padding: auto;
+            margin: auto;
+            text-align: center;
+        }
+    </style>
 
 <body>
     <ons-page>
-        <ons-toolbar style="background-color:	LightCoral">
+        <ons-toolbar style="background: #00bcd5;">
 
             <div class="left">
                 <ons-icon size="45px" onclick="index()" icon="angle-left">
@@ -66,12 +80,16 @@
             </div>
         </ons-toolbar>
         <ons-page>
-            <div class="bg">
-                <div class="bg1">
-                    <div class="clearfix">
-                        <img class="quick" src="img/brackets.png">
-                        <br><br>
-                        <div class="div">เทียนทัตนคลินิก</div>
+                <div class="bg">
+                        <div class="bg1">
+                            <div class="row">
+                                <!-- <img class="quick" src="img/tooth12.png" > -->
+                                <div class="div">
+                                    <img class="quick" src="img/tooth.png" ><br>TIEN DENTAL</div>
+        
+                            </div>
+                            <br>
+                            <br>
 
                         <p>รายการนัดของฉัน</p>
                         <center>
@@ -85,18 +103,17 @@
 
 
                 </div>
-            </div>
+          
         </ons-page>
 </body>
-</ons-page>
-</body>
+
 
 <script>
     var index = localStorage.getItem("Index");
     var settings = {
         "async": true,
         "crossDomain": true,
-        "url": "http://172.26.252.977:8080/book",
+        "url": "http://172.26.252.97:8080/book",
         "method": "GET",
         "headers": {
             "Content-Type": "application/x-www-form-urlencoded",
@@ -121,7 +138,9 @@
                     '<div class="clearfix">' +
                     '<p><img class="quick" src="img/health-report.png" width="50"' +
                     'height="50">' +
-                    "วันที่ : " + loop[j].start + '<br>' + "ประเภท : " + loop[j].Type + '<br>' + "รายละเอียด : " + loop[j].Detail + '</p>' +
+                    '<div>'+
+                    "วันที่ : " + loop[j].start + '<br>' + " เวลา : " + loop[j].Time + '<br>' + "  ประเภท : " + loop[j].Type + '<br>' + " รายละเอียด : " + loop[j].Detail + '</p>' +
+                    '</div>'+
                     '</div>' +
                     '</ons-col>' +
                     '</ons-row>'
@@ -139,7 +158,7 @@
     var settings1 = {
         "async": true,
         "crossDomain": true,
-        "url": "http://172.26.252.977:8080/customer",
+        "url": "http://172.26.252.97:8080/customer",
         "method": "GET",
         "headers": {
             "Content-Type": "application/x-www-form-urlencoded",
@@ -159,7 +178,7 @@
 
             if (getItemCus == loopCus[i].CusID) {
 
-                $("#namehis").html("คุณ   " + loopCus[i].Fname);
+                $("#namehis").html("คุณ   " + loopCus[i].Fname+"  "+ loopCus[i].Lname);
                 console.log("indexHis: " + getItemCus);
                 console.log("Fname 1: " + loopCus[i].Fname);
             }
