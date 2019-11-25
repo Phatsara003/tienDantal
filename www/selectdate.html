@@ -12,78 +12,80 @@
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
     <!-- date Bootstarp ui -->
-    <!-- <meta charset="utf-8">
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
-    <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" /> -->
+    <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
 
 
 
     <!-- script Date jquery ui -->
-    <link href="https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">
+    <!-- <link href="https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
-    <script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+    <script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script> -->
 
 
 
 </head>
 <style>
-    .bg {
-        background-color: RGB(255, 160, 122, 0.3);
-        background-repeat: no-repeat;
-        background-attachment: scroll;
-        overflow: scroll;
-    }
-
-    .bg1 {
-        background-color: white;
-        border-radius: 30px;
-        display: block;
-        margin: 15px;
-        height: 660px;
-
-    }
-
-    .div {
-
-        text-indent: 22px;
-        width: 380px;
-        height: 75px;
-        font-size: 29px;
-        font-weight: bold;
-    }
-
-    .quick {
-        float: left;
-        width: 90;
-        height: 95;
-        margin: 5px;
-    }
-
-    .clearfix {
-        overflow: auto;
-    }
-
-    .img {
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
-        width: 95px;
-        height: 95px;
-
-    }
-
-    * {
-        padding: auto;
-        margin: auto;
-        text-align: center;
-    }
-</style>
-
+        .bg {
+            background: #c9f3f8d2;
+            background-repeat: no-repeat;
+            background-attachment: scroll;
+            overflow: scroll;
+        }
+    
+        .bg1 {
+            background-color: white;
+            border-radius: 30px;
+            display: block;
+            margin: 15px;
+            height: 660px;
+    
+        }
+    
+        .div {
+            text-indent: 3px;
+            width: 350px;
+            height: 75px;
+            font-size: 29px;
+            font-weight: bold;
+        }
+    
+        .quick {
+            float: left;
+            width: 90px;
+            height: 90px;
+            margin: 20px;
+        } 
+    
+        .clearfix {
+            width: 100px;
+            margin: 0 auto;
+            overflow: hidden;
+            }
+        
+    
+        .img {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 95px;
+            height: 95px;
+    
+        }
+    
+        * {
+            padding: auto;
+            margin: auto;
+            text-align: center;
+        }
+    </style>
+    
 <body>
     <ons-page>
-        <ons-toolbar style="background-color:	LightCoral">
+        <ons-toolbar style="background: #00bcd5;">
 
             <div class="left">
                 <ons-icon size="45px" onclick="index()" icon="angle-left">
@@ -91,14 +93,16 @@
             </div>
         </ons-toolbar>
         <ons-page>
-            <div class="bg">
-                <div class="bg1">
-                    <div class="clearfix">
-                        <img class="quick" src="img/brackets.png">
-                        <br><br>
-                        <div class="div">เทียนทัตนคลินิก</div>
-
-                    </div>
+                <div class="bg">
+                        <div class="bg1">
+                            <div class="row">
+                                <!-- <img class="quick" src="img/tooth12.png" > -->
+                                <div class="div">
+                                    <img class="quick" src="img/tooth.png" ><br>TIEN DENTAL</div>
+        
+                            </div>
+                            <br>
+                            <br>
                     <hr>
                     <br>
                     <div class="container">
@@ -110,34 +114,44 @@
                         <body>
                             <br>
                             <input id="datepicker" width="250">
-
                             <script>
-                                var today = new Date();
-                                $('#datepicker').datepicker({
-                                    dateFormat: "D,yy-mm-dd", // แสดงวันด้วย DD คือวันอะไร จ-ศ 
-                                    minDate: today,
-                                });
+                                    var today = new Date();
+                                    $('#datepicker').datepicker({
+                                      format: "yyyy-mm-dd", // แสดงวันด้วย DD คือวันอะไร จ-ศ 
+                                      minDate: today,
+                                    });
                             </script>
-
                         </body>
                         <script>
                             function getDate() {
                                 var date = document.getElementById("datepicker").value;
-
-                             
-                                    var day = date.substring(0, 3);
+                                var d   = new Date(date);
+                                var day = d.getDay();
+ 
+                                    // var day = date.substring(0, 3);
                                     console.log("date ::" + date);
-                                    // console.log("day ::" + day);
+                                    console.log("day ::" + day);
                                     var date = localStorage.setItem('date', date)
                                     var getLocalDate = localStorage.getItem("date");
                                     var day = localStorage.setItem('day', day)
                                     var getLocalDay = localStorage.getItem("day");
-                                    console.log("LocalDate::" + getLocalDate);
-
-                               
-
+                                    
                             }
                         </script>
+
+                        <!-- <script>
+                                function getDate() {
+                                  var date = document.getElementById("datepicker").value;
+                                  // ***********************
+                                  var d   = new Date(date);
+                                  let day = d.getDay();
+                                  console.log("date ::" + date+" day"+day);
+                                  
+                                  daysInWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+                                  console.log(daysInWeek[day]);
+                                  
+                                }
+                         </script> -->
 
 
                     </div>

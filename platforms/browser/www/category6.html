@@ -101,7 +101,7 @@
 </body>
 <script>
     function qq() {
-        window.location.href = 'confirm.html'
+        window.location.href = 'home.html'
     }
 
     function queue() {
@@ -114,11 +114,14 @@
 
 
         var status = localStorage.setItem('status', 0)
-
+        var alert = localStorage.setItem('alert', 0)
+        var situation = localStorage.getItem("situation");
         var getLocalDate = localStorage.getItem("date");
         var getLocalTime = localStorage.getItem("time");
         var getLocalCategory6 = localStorage.getItem("category6");
         var getLocalStatus = localStorage.getItem("status");
+        var getLocalalert = localStorage.getItem("alert");
+        var getLocalsituation = localStorage.getItem("situation");
         var getLocalCusID = localStorage.getItem("Index")
         var getLocalType6 = localStorage.getItem("type6");
         // var Last_BookID = localStorage.getItem("last_BookID");
@@ -127,15 +130,16 @@
         var settings = {
             "async": true,
             "crossDomain": true,
-            "url": "http://172.19.172.73:8080/book?BookID=" + null + "&start=" + getLocalDate + "&Time=" + getLocalTime + "&Detail=" + getLocalCategory1 + "&Status=" + getLocalStatus + "&Type=" + getLocalType1 + "&end=" + getLocalDate + "&CusID=" + getLocalCusID,
+            "url": "http://172.26.252.977:8080/book?BookID=" + null + "&start=" + getLocalDate + "&Time=" + getLocalTime + "&Detail=" + getLocalCategory6 + "&Status=" + getLocalStatus + "&Type=" + getLocalType6 + "&end=" + getLocalDate + "&alert=" + getLocalalert +"&situation=" + getLocalsituation + "&CusID=" + getLocalCusID,
             "method": "POST",
-            "headers": {
-                "Content-Type": "application/x-www-form-urlencoded",
-                "cache-control": "no-cache",
-                "Postman-Token": "be3c7948-a89e-49d8-b27a-78ca24647e7c"
-            },
-            "data": ""
-        }
+  "headers": {
+    "Content-Type": "application/x-www-form-urlencoded",
+    "cache-control": "no-cache",
+    "Postman-Token": "887c9555-fc21-47d3-b46b-6eab6cea0a65"
+  },
+  "data": ""
+}
+
 
         $.ajax(settings).done(function (response) {
             console.log(response);

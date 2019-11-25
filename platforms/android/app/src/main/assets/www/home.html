@@ -20,55 +20,59 @@
 
     <script src="cordova.js"></script>
     <style>
-        .bg {
-
-            background-color: RGB(255, 160, 122, 0.3);
-            background-repeat: no-repeat;
-
-            height: 1000px;
-        }
-
-        .img {
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-            width: 50px;
-            height: 50px;
-
-        }
-
-        .quick {
-            float: left;
-        }
-
-        .clearfix {
-            overflow: auto;
-        }
-
-        .div {
-            margin: 3px;
-            padding: 10px;
-            width: 380px;
-            height: 75px;
-            text-align: right;
-            font-size: 40px;
-        }
-    </style>
+            .bg {
+    
+                background: #c9f3f8d2;
+                background-repeat: no-repeat;
+    
+                height: 1000px;
+            }
+    
+            .img {
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+                width: 50px;
+                height: 50px;
+    
+            }
+    
+            .quick {
+                float: left;
+            }
+    
+            .clearfix {
+                overflow: auto;
+            }
+    
+            .div {
+                margin: 3px;
+                padding: 10px;
+                width: 380px;
+                height: 75px;
+                text-align: right;
+                font-size: 40px;
+            }
+        </style>
+    
 
 </head>
 
 <body>
     <ons-page>
-        <ons-toolbar style="background-color:	LightCoral">
-            <div class="left">
-                <ons-toolbar-buton>
-                    <i class="fas fa-envelope-open-text" style="margin-left: 10px;color: white; "></i>
-                </ons-toolbar-buton>
-            </div>
-            <div class="center" style="text-align: center; margin-left: -10px; color: white;"></i>Tien Dental</div>
-            <div class="right"></div>
-
-        </ons-toolbar>
+            <ons-toolbar style="background: #00bcd5;">
+                    <div class="right">
+                        <ons-toolbar-buton>
+                            <!-- <i class="fas fa-envelope-open-text" style="margin-left: 10px;color: white; "></i> -->
+                            <img style="margin-top: 5px; width: 40px; height: 40px;" src="img/bell.png" alt="Pineapple"
+                                width="60" height="60">
+                    </div>
+                    </ons-toolbar-buton>
+                    </div>
+                    <div class="center" style="text-align: center; margin-left: -10px; color: white;"></i>TIEN DENTAL</div>
+                    <div class="right"></div>
+        
+                </ons-toolbar>
 
 
         <div class="bg">
@@ -87,7 +91,7 @@
 
                 <ons-col>
                     <div class="center" style="margin-left:45px; ">
-                        <img class="quick" style="margin-top: 5px;" src="img/tooth1.png" alt="Pineapple" width="60"
+                        <img class="quick" style="margin-top: 5px;" src="img/user.png" alt="Pineapple" width="60"
                             height="60">
                     </div>
                 </ons-col>
@@ -194,7 +198,7 @@
     var settings1 = {
         "async": true,
         "crossDomain": true,
-        "url": "http://192.168.137.236:8080/book/",
+        "url": "http://172.26.252.97:8080/book/",
         "method": "GET",
         "headers": {
             "cache-control": "no-cache",
@@ -212,11 +216,11 @@
                 //console.log(" Loop_BookId : "+i+"::"+ loopbook[i].BookID );
                 // console.log(" Loop_Date : " + loopbook[i].start + "::" + loopbook[i].Time);
                 if (index == loopbook[i].CusID) {
-                    console.log("testDate::" + loopbook[i].start + "::" + loopbook[i].Time);
+                    console.log("testDate(Book)::" + loopbook[i].start + "::" + loopbook[i].Time+ "::" + loopbook[i].situation);
 
-                    if (date == loopbook[i].start && loopbook[i].Status == 0) {
+                    if (date == loopbook[i].start && loopbook[i].situation == 0 ) {
                         localStorage.setItem('showq', 1);
-                        console.log("d::" + loopbook[i].start + "s::" + loopbook[i].Status);
+                        console.log("d::" + loopbook[i].start + "::" + loopbook[i].Status);
                         var time = localStorage.getItem("time"); //เก็บเวลา
                         console.log("time::" + time);
 
@@ -228,7 +232,7 @@
                         var day = localStorage.getItem("day")
                         console.log("day ::" + day);
 
-                        if (day == "Sun" || day == "Sat") {
+                        if (day == "0" || day == "6") {
                             console.log(arrOrderSS);
                             var timeSS1;
                             var timeSS2;
@@ -352,7 +356,7 @@
                                 ' <div style="height: 100px; padding: 1px 0 0 0;">' +
                                 ' <div class="card" onclick="qq()">' +
                                 ' <ons-row>' +
-                                '<div class="card__title" style="margin-left: 40px">หมายเลขคิวของคุณ</div>' +
+                                '<div class="card__title" style="margin-left: 40px">หมายเลขคิว</div>' +
                                 '<ons-col>' +
                                 '<div class="card__title" style="margin-left: 50px">รออีก(คิว)</div>' +
                                 '</ons-col>' +
@@ -390,24 +394,41 @@
                     d.getMonth() + 1,
                     d.getDate()
                     ].join('-');
-                console.log(" Datefvfcvc :" + dformat);
-                var purpose = loopbook[i].start 
-                var  result = purpose.replace(/,/g, ""); 
-                 console.log("result"+result);
-                 
+                console.log(" RealDate :" + dformat);
+                var purpose = loopbook[i].start
+                var result = purpose.replace(/,/g, "");
+                console.log("ResultRealDate : " + result);
+                // แจ้งเตือน              
 
-                if ( result == dformat ) {
+                if (result == dformat) {
                     cordova.plugins.notification.local.schedule([
-                  {
-                    id: id,
-                    title: "อีบ้า",
-                    text: "ได้สักทีเหอะ!!!!!",
-                    //badge: n
-                    summary: 'แจ้งเตือนใหม่'
-                  }
-                ])
+                        {
+                            id: id,
+                            title: "อีบ้า",
+                            text: "ได้สักทีเหอะ!!!!!",
+                            //badge: n
+                            summary: 'แจ้งเตือนใหม่'
+                        }
+                    ])
 
                 }
+                if (alert == 0) {
+
+                } else {
+                    if (alert == 1) {
+                        cordova.plugins.notification.local.schedule([
+                            {
+                                id: id,
+                                title: "แจ้งเตือน!!",
+                                text: "เลื่อนเวลาไปอีก 45 นาที",
+                                //badge: n
+                                summary: 'แจ้งเตือนใหม่'
+                            }
+                        ])
+                    }
+                }
+
+
             }
 
         }
@@ -416,7 +437,7 @@
     var settings = {
         "async": true,
         "crossDomain": true,
-        "url": "http://192.168.137.236:8080/customer/",
+        "url": "http://172.26.252.97:8080/customer/",
         "method": "GET",
         "headers": {
             "cache-control": "no-cache",
@@ -457,6 +478,9 @@
 
 
 </script>
+
+
+
 
 
 

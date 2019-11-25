@@ -1,120 +1,66 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+  <title>Title</title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 
 <body>
 
-    <button onclick="noti()">notification</button>
-    </div>
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+  <!-- date Bootstarp ui -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
+  <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
+
+  <body>
+    <br>
+    <input id="datepicker" width="250">
 
     <script>
-            let inOneMin = new Date();
-            inOneMin.setMinutes(inOneMin.getMinutes() + 1);
-            let id = new Date().getMilliseconds();
-
-            let n = new Number('New');
-
-            if (myBook.alert == 1) {
-
-            }
-            else {
-
-              if (myBook.status == 0) {
-                cordova.plugins.notification.local.schedule([
-                  {
-                    id: id,
-                    title: myBook.car_num,
-                    text: checkstatus,
-                    //badge: n
-                    summary: 'แจ้งเตือนใหม่'
-                  }
-                ])
-
-                var car_num = myBook.car_num;
-                var status = myBook.status;
-                postAPI_alert0(car_num, status)
-                var data = [];
-                async function postAPI_alert0(car_num, status) {
-                  console.log(car_num, status);
-                  let html = '';
-                  var bodyFormData = new FormData();
-                  bodyFormData.set('car_num', car_num);
-                  bodyFormData.set('status', status);
-
-                  await axios({
-                    method: 'post',
-                    url: 'https://' + IP + '/user/updateAlert',
-                    data: bodyFormData,
-                    config: {
-                      headers: {
-                        'Content-Type': 'multipart/form-data'
-                      }
-                    }
-                  })
-                    .then(function (response) {
-                      //handle success
-                      console.log(response);
-                      // location.href = "homeStaff.html";
-                    })
-                    .catch(function (response) {
-                      //handle error
-                      console.log(response);
-                    })
-                }
-
-              } if (myBook.status == 1) {
-                cordova.plugins.notification.local.schedule([
-                  {
-                    id: id,
-                    title: myBook.car_num,
-                    text: checkstatus,
-                    //badge: n
-                    summary: 'แจ้งเตือนใหม่'
-                  }
-                ])
-
-                var car_num = myBook.car_num;
-                var status = myBook.status;
-                postAPI_alert1(car_num, status)
-                var data = [];
-                async function postAPI_alert1(car_num, status) {
-                  console.log(car_num, status);
-                  let html = '';
-                  var bodyFormData = new FormData();
-                  bodyFormData.set('car_num', car_num);
-                  bodyFormData.set('status', status);
-
-                  await axios({
-                    method: 'post',
-                    url: 'https://' + IP + '/user/updateAlert',
-                    data: bodyFormData,
-                    config: {
-                      headers: {
-                        'Content-Type': 'multipart/form-data'
-                      }
-                    }
-                  })
-                    .then(function (response) {
-                      //handle success
-                      console.log(response);
-                      // location.href = "homeStaff.html";
-                    })
-                    .catch(function (response) {
-                      //handle error
-                      console.log(response);
-                    })
-                }
-
-              }
-
+      var today = new Date();
+      $('#datepicker').datepicker({
+        format: "yyyy-mm-dd", // แสดงวันด้วย DD คือวันอะไร จ-ศ 
+        minDate: today,
+      });
     </script>
+  </body>
 
-</body>
+  <script>
+    function getDate() {
+      var date = document.getElementById("datepicker").value;
+      // ***********************
+      var d   = new Date(date);
+      let day = d.getDay();
+      console.log("date ::" + date+" day"+day);
+      daysInWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+      console.log(daysInWeek[day]);
+      
+    }
+  </script>
+
+
+  <form>
+    <a href="#" class="btn btn-outline-secondary" onclick="getDate()" role="button">ถัดไป</a>
+  </form>
 
 </html>

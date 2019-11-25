@@ -8,58 +8,70 @@
     <link rel="stylesheet" href="https://unpkg.com/onsenui/css/onsenui.css">
     <link rel="stylesheet" href="https://unpkg.com/onsenui/css/onsen-css-components.min.css">
     <script src="https://unpkg.com/onsenui/js/onsenui.min.js"></script>
+      <!-- Bootstrap CSS -->
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 
 </head>
 <style>
-    .bg {
-        background-color: RGB(255, 160, 122, 0.3);
-        background-repeat: no-repeat;
-        background-attachment: scroll;
-        overflow: scroll;
-    }
-
-    .bg1 {
-        background-color: white;
-        border-radius: 30px;
-        display: block;
-        margin: 15px;
-        height: 615px;
-
-    }
-
-    .div {
-
-        text-indent: 22px;
-        width: 380px;
-        height: 75px;
-        font-size: 29px;
-        font-weight: bold;
-    }
-
-    .quick {
-        float: left;
-        width: 90;
-        height: 95;
-        margin: 5px;
-    }
-
-    .clearfix {
-        overflow: auto;
-    }
-
-    .img {
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
-        width: 95px;
-        height: 95px;
-
-    }
-</style>
-
+        .bg {
+            background: #c9f3f8d2;
+            background-repeat: no-repeat;
+            background-attachment: scroll;
+            overflow: scroll;
+        }
+    
+        .bg1 {
+            background-color: white;
+            border-radius: 30px;
+            display: block;
+            margin: 15px;
+            height: 615px;
+    
+        }
+    
+        .div {
+            text-indent: 3px;
+            width: 350px;
+            height: 75px;
+            font-size: 29px;
+            font-weight: bold;
+        }
+    
+        .quick {
+            float: left;
+            width: 90px;
+            height: 90px;
+            margin: 20px;
+        } 
+    
+        .clearfix {
+            width: 100px;
+            margin: 0 auto;
+            overflow: hidden;
+            }
+        
+    
+        .img {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 95px;
+            height: 95px;
+    
+        }
+    
+        * {
+            padding: auto;
+            margin: auto;
+            text-align: center;
+        }
+    </style>
 <body>
     <ons-page>
-        <ons-toolbar style="background-color:	LightCoral">
+        <ons-toolbar style="background: #00bcd5;">
 
             <div class="left">
                 <ons-icon size="45px" onclick="selectq()" icon="angle-left">
@@ -67,21 +79,25 @@
             </div>
         </ons-toolbar>
         <ons-page>
-            <div class="bg">
-                <div class="bg1">
-                    <div class="clearfix">
-                        <img class="quick" src="img/brackets.png">
-                        <br><br>
-                        <div class="div">เทียนทัตนคลินิก</div>
-
-                    </div>
+                <div class="bg">
+                        <div class="bg1">
+                            <div class="row">
+                                <!-- <img class="quick" src="img/tooth12.png" > -->
+                                <div class="div">
+                                    <img class="quick" src="img/tooth.png"><br>TIEN DENTAL</div>
+        
+                            </div>
+                            <br>
+                            <br>
                     <hr>
                     <br>
                     <br>
                     <p style="text-align: center; margin-top: 10px;">เลือกใช้บริการ</p>
 
-                    <input class="form-control" style="text-align: center;" type="text" name="" id="type4"
-                        value="ทันตกรรมฟันเทียม" disabled>
+                    <div class="form-group col-md-6">
+                            <input class="form-control" style="text-align: center; width: 300px; margin: auto;" type="text"
+                                name="" id="type4" value="ทันตกรรมฟันเทียม" disabled></input>
+                        </div>
 
                     <br>
                     <select id="cate4" class="select-input select-input--material" style="display: block;
@@ -98,7 +114,7 @@
                     </select>
 
                 </div>
-                <ons-button style="background: SALMON;" modifier="large" onclick="queue()">จองคิว</ons-button>
+                <ons-button style="background: #00bcd5;" modifier="large" onclick="queue()">จองคิว</ons-button>
             </div>
         </ons-page>
 </body>
@@ -117,10 +133,12 @@
 
         var status = localStorage.setItem('status', 0)
         var alert = localStorage.setItem('alert', 0)
+        var situation = localStorage.getItem("situation");
         var getLocalDate = localStorage.getItem("date");
         var getLocalTime = localStorage.getItem("time");
         var getLocalCategory4 = localStorage.getItem("category4");
         var getLocalStatus = localStorage.getItem("status");
+        var getLocalsituation = localStorage.getItem("situation");
         var getLocalalert = localStorage.getItem("alert");
         var getLocalCusID = localStorage.getItem("Index")
         var getLocalType4 = localStorage.getItem("type4");
@@ -130,7 +148,7 @@
         var settings = {
             "async": true,
             "crossDomain": true,
-            "url": "http://192.168.137.236:8080/book?BookID=" + null + "&start=" + getLocalDate + "&Time=" + getLocalTime + "&Detail=" + getLocalCategory4 + "&Status=" + getLocalStatus + "&Type=" + getLocalType4 + "&end=" + getLocalDate + "&alert=" + getLocalalert + "&CusID=" + getLocalCusID,
+            "url": "http://172.26.252.97:8080/book?BookID=" + null + "&start=" + getLocalDate + "&Time=" + getLocalTime + "&Detail=" + getLocalCategory4 + "&Status=" + getLocalStatus + "&Type=" + getLocalType4 + "&end=" + getLocalDate + "&alert=" + getLocalalert +"&situation=" + getLocalsituation + "&CusID=" + getLocalCusID,
             "method": "POST",
   "headers": {
     "Content-Type": "application/x-www-form-urlencoded",
