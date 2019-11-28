@@ -33,34 +33,57 @@
   <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
 
   <body>
-    <br>
-    <input id="datepicker" width="250">
+
+
 
     <script>
-      var today = new Date();
-      $('#datepicker').datepicker({
-        format: "yyyy-mm-dd", // แสดงวันด้วย DD คือวันอะไร จ-ศ 
-        minDate: today,
+ 
+      var settings1 = {
+        "async": true,
+        "crossDomain": true,
+        "url": "http://52.184.32.252:8002/book",
+        "method": "GET",
+        "headers": {
+          "Content-Type": "application/x-www-form-urlencoded",
+          "cache-control": "no-cache",
+          "Postman-Token": "7beffd31-3e5f-4d18-be90-1b46ee489568"
+        }
+      }
+
+      $.ajax(settings1).done(function (response) {
+        let loopbook = response.data;
+
+
+        let inOneMin = new Date();
+        inOneMin.setMinutes(inOneMin.getMinutes() + 1);
+        let id = new Date().getMilliseconds();
+        var d = new Date();
+
+        dformat =
+          [d.getFullYear(),
+          d.getMonth() + 1,
+          d.getDate()
+          ].join('-');
+        console.log(" RealDate :" + dformat);
+
+
+
+        for (let i = 0; i < loopbook.length; i++) {
+
+          console.log("Date:" + loopbook[i].start);
+          if (loopbook[i].start == dformat) {
+            alert("true");          
+          }else{
+            alert("false");
+          }
+        }
       });
     </script>
+
   </body>
 
-  <script>
-    function getDate() {
-      var date = document.getElementById("datepicker").value;
-      // ***********************
-      var d   = new Date(date);
-      let day = d.getDay();
-      console.log("date ::" + date+" day"+day);
-      daysInWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-      console.log(daysInWeek[day]);
-      
-    }
-  </script>
 
 
-  <form>
-    <a href="#" class="btn btn-outline-secondary" onclick="getDate()" role="button">ถัดไป</a>
-  </form>
+  
 
 </html>

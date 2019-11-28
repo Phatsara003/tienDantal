@@ -30,7 +30,7 @@
 
             background: #c9f3f8d2;
             background-repeat: no-repeat;
-            height: 700px;
+            height: 780px;
         }
 
         .img {
@@ -63,7 +63,7 @@
 
 </head>
 
-<body>
+<body onload="bodyonload();">
     <ons-page>
         <ons-toolbar style="background: #00bcd5;">
             <div class="right">
@@ -110,7 +110,7 @@
                 </ons-col>
                 <hr>
 
-            </ons-row> 
+            </ons-row>
             <div id="showinhome"></div><br><br>
             <p style="text-align: center; margin-top: 10px;">วันนี้รับบริการแบบไหนดีคะ ?</p>
 
@@ -196,35 +196,47 @@
 </body>
 
 <script>
-    var index = localStorage.getItem("Index");
-    var date = localStorage.getItem("date");
 
-    console.log("DD:" + date);
+    function showqq() {
 
-    var settings1 = {
-        "async": true,
-        "crossDomain": true,
-        "url": "http://172.26.252.97:8080/book",
-        "method": "GET",
-        "headers": {
-            "Content-Type": "application/x-www-form-urlencoded",
-            "cache-control": "no-cache",
-            "Postman-Token": "7beffd31-3e5f-4d18-be90-1b46ee489568"
+
+        var index = localStorage.getItem("Index");
+        var date = localStorage.getItem("date");
+
+        // console.log("DD:" + date);
+
+        var settings1 = {
+            "async": true,
+            "crossDomain": true,
+            "url": "http://172.26.200.73:8080/book",
+            "method": "GET",
+            "headers": {
+                "Content-Type": "application/x-www-form-urlencoded",
+                "cache-control": "no-cache",
+                "Postman-Token": "7beffd31-3e5f-4d18-be90-1b46ee489568"
+            }
         }
-    }
-
-    $.ajax(settings1).done(function (response) {
+        //=====================ajaxbookq=============================================
+        $.ajax(settings1).done(function (response) {
             let loopbook = response.data;
-
+            //===================== for-1 =============================================
             for (let i = 0; i < loopbook.length; i++) {
+                //===================== if-1 =============================================
                 if (i < loopbook.length) {
                     //console.log(" Loop_BookId : "+i+"::"+ loopbook[i].BookID );
                     // console.log(" Loop_Date : " + loopbook[i].start + "::" + loopbook[i].Time);
-                    if (index == loopbook[i].CusID) {
-                        console.log("testDate(Book)::" + loopbook[i].start + "::" + loopbook[i].Time + "::" + loopbook[i].situation);
 
+                    //===================== if-2=============================================
+                    if (index == loopbook[i].CusID) {
+                        // console.log("testDate(Book)::" + loopbook[i].start + "::" + loopbook[i].Time + "::" + loopbook[i].situation);
+
+                        //===================== if-3=============================================
+                        ///////////////ดึงsituationจากMobile////////////////////
                         if (date == loopbook[i].start && loopbook[i].situation == 0) {
+                            console.log("mobile");
+                            
                             localStorage.setItem('showq', 1);
+                            localStorage.setItem('reload', "reload");
                             console.log("d::" + loopbook[i].start + "::" + loopbook[i].Status);
                             var time = localStorage.getItem("time"); //เก็บเวลา
                             console.log("time::" + time);
@@ -386,10 +398,20 @@
                             }
 
                         }
+                        
+                        
+                        /////////////ดึงsituationจากฝั่งAdmin////////////////////////
+
+                        //===================== else if =============================================
                         else if (index == loopbook[i].CusID && loopbook[i].situation == 0) {
+                            console.log("Web");
+                            
                             localStorage.setItem('showq', 1);
+                            localStorage.setItem('reload', "reload");
                             console.log("d::" + loopbook[i].start + "::" + loopbook[i].Status);
                             var time = loopbook[i].Time //เก็บเวลา
+                            localStorage.setItem("time", time);
+                            localStorage.setItem("date", loopbook[i].start)
                             console.log("time::" + time);
 
                             var arrOrderMF = ["A001", "A002", "A003", "A004", "A005"];
@@ -398,6 +420,7 @@
 
 
                             var day = loopbook[i].dayofweek
+
                             console.log("day ::" + day);
 
                             if (day == "0" || day == "6") {
@@ -547,94 +570,99 @@
 
 
                             }
+                            //////////////// reload ////////////////////
 
                         }
 
+                        //////////////// reload ////////////////////
+                        else if (index == loopbook[i].CusID && loopbook[i].situation == 1 && localStorage.getItem('reload') == "reloaded") {
+                            localStorage.setItem('reload', "reload");
 
+                            window.location.reload(true)
+
+
+                        }
+
+                        
                     }
-                    let inOneMin = new Date();
+                    //////////////// notification /////////////////
+          
+            }
+
+                }
+
+                let inOneMin = new Date();
                     inOneMin.setMinutes(inOneMin.getMinutes() + 1);
                     let id = new Date().getMilliseconds();
                     var d = new Date();
-                    var days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
-                    dformat = [days[d.getDay() - 1]].join(',') +
+
+                    dformat =
                         [d.getFullYear(),
                         d.getMonth() + 1,
                         d.getDate()
                         ].join('-');
-                    console.log(" RealDate :" + dformat);
-                    var purpose = loopbook[i].start
-                    var result = purpose.replace(/,/g, "");
-                    console.log("ResultRealDate : " + result);
-                    // แจ้งเตือน              
+                    console.log(" Date11 :" + dformat);
+                    for (let i = 0; i < loopbook.length; i++) {
 
-                    if (result == dformat) {
-                        cordova.plugins.notification.local.schedule([
-                            {
-                                id: id,
-                                title: "อีบ้า",
-                                text: "ได้สักทีเหอะ!!!!!",
-                                //badge: n
-                                summary: 'แจ้งเตือนใหม่'
+                        console.log("Date:" + loopbook[i].start);
+                        if (loopbook[i].CusID == localStorage.getItem('Index')) {
+                            if (loopbook[i].start == dformat) {
+                                cordova.plugins.notification.local.schedule({
+                                title: 'เอ๊ะ! วันนี้คุณมีนัด ',
+                                text: 'เวลาของคุณคือ:' + loopbook[i].Time,
+                                foreground: true
+
+                            });
                             }
-                        ])
-
-                    }
-                    if (alert == 0) {
-
-                    } else {
-                        if (alert == 1) {
-                            cordova.plugins.notification.local.schedule([
-                                {
-                                    id: id,
-                                    title: "แจ้งเตือน!!",
-                                    text: "เลื่อนเวลาไปอีก 45 นาที",
-                                    //badge: n
-                                    summary: 'แจ้งเตือนใหม่'
-                                }
-                            ])
                         }
+
+
                     }
 
 
-                }
-
-            }
 
         });
-        var settings = {
-            "async": true,
+
+    }
+
+    function bodyonload() {
+        setTimeout(showqq(), 2000)
+    }
+    ///////////แสดงหัวชื่อคนไข้//////////////////
+    var index = localStorage.getItem("Index");
+    var settings = {
+        "async": true,
         "crossDomain": true,
-        "url": "http://172.26.252.97:8080/customer",
+        "url": "http://172.26.200.73:8080/customer",
         "method": "GET",
         "headers": {
             "Content-Type": "application/x-www-form-urlencoded",
             "cache-control": "no-cache",
             "Postman-Token": "7ce21012-571f-46f2-b635-45e9610ecc35"
         }
+    }
+
+    // console.log("index : " + index);
+
+    $.ajax(settings).done(function (response) {
+        let loop = response.data;
+
+        console.log("loop : " + loop.length);
+
+        for (let i = 0; i < loop.length; i++) {
+
+            // console.log(" Loop_Fname : " + loop[i].Fname);
+
+            if (index == loop[i].CusID) {
+                $("#nameSh").html("" + "สวัสดีคุณ :" + " " + loop[i].Fname + " " + loop[i].Lname);
+                console.log("Fname : " + loop[i].Fname);
+
+            }
         }
 
-    console.log("index : " + index);
-
-        $.ajax(settings).done(function (response) {
-            let loop = response.data;
-
-            console.log("loop : " + loop.length);
-
-            for (let i = 0; i < loop.length; i++) {
-
-                // console.log(" Loop_Fname : " + loop[i].Fname);
-
-                if (index == loop[i].CusID) {
-                    $("#nameSh").html("" + "สวัสดีคุณ :" + " " + loop[i].Fname + " " + loop[i].Lname);
-                    console.log("Fname : " + loop[i].Fname);
-
-                }
-            }
 
 
-
-        });
+    });
 
     // คอนเฟิม
 
@@ -658,9 +686,9 @@
 
 
 
-        function chatbot1() {
-            window.location.href = 'chatbot1.html'
-        }
+    function chatbot1() {
+        window.location.href = 'chatbot1.html'
+    }
     function selectdatetime() {
 
         var a = localStorage.getItem("showq");

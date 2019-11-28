@@ -142,7 +142,7 @@
 
                         <ons-col>
                             <div class="row" >
-                                <img class="quick1 " src="img/medical.png"> <br>
+                                <img class="quick1" src="img/medical.png"> <br>
                                 <div style="color: black; margin-left: 3px;" id="time"></div>
                             </div>
                         </ons-col>
@@ -170,6 +170,8 @@
             </div>
 
             <script>
+
+
                 var date = localStorage.getItem("date"); //เก็บวันที่
                 var time = localStorage.getItem("time"); //เก็บเวลา
 
@@ -186,7 +188,7 @@
                     "A006", "A007", "A008", "A009", "A010"];
 
                 var day = localStorage.getItem("day")
-                if (day == "Sun" || day == "Sat") {
+                if (day == "0" || day == "6") {
                     console.log(arrOrderSS);
                     var timeSS1;
                     var timeSS2;
@@ -288,7 +290,7 @@
                 var settings = {
                     "async": true,
                     "crossDomain": true,
-                    "url": "http://172.26.252.97:8080/book",
+                    "url": "http://52.184.32.252:8002/book",
                     "method": "GET",
                     "headers": {
                         "Content-Type": "application/x-www-form-urlencoded",
@@ -318,7 +320,7 @@
             var settings = {
                 "async": true,
                 "crossDomain": true,
-                "url": "http://172.26.252.97:8080/book/" + bookid,
+                "url": "http://52.184.32.252:8002/book/" + bookid,
                 "method": "DELETE",
                 "headers": {
                     "Content-Type": "application/x-www-form-urlencoded",

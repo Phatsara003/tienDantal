@@ -170,6 +170,8 @@
             </div>
 
             <script>
+
+
                 var date = localStorage.getItem("date"); //เก็บวันที่
                 var time = localStorage.getItem("time"); //เก็บเวลา
 
@@ -288,7 +290,7 @@
                 var settings = {
                     "async": true,
                     "crossDomain": true,
-                    "url": "http://172.26.252.97:8080/book",
+                    "url": "http://172.26.200.73:8080/book",
                     "method": "GET",
                     "headers": {
                         "Content-Type": "application/x-www-form-urlencoded",
@@ -318,7 +320,7 @@
             var settings = {
                 "async": true,
                 "crossDomain": true,
-                "url": "http://172.26.252.97:8080/book/" + bookid,
+                "url": "http://172.26.200.73:8080/book/" + bookid,
                 "method": "DELETE",
                 "headers": {
                     "Content-Type": "application/x-www-form-urlencoded",

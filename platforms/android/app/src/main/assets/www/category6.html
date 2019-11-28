@@ -134,14 +134,14 @@
         var status = localStorage.setItem('status', 0)
         var alert = localStorage.setItem('alert', 0)
         var situation = localStorage.getItem("situation");
-        var dayofweek = localStorage.getItem("dayofweek");
+        
         var getLocalDate = localStorage.getItem("date");
         var getLocalTime = localStorage.getItem("time");
         var getLocalCategory6 = localStorage.getItem("category6");
         var getLocalStatus = localStorage.getItem("status");
         var getLocalalert = localStorage.getItem("alert");
         var getLocalsituation = localStorage.getItem("situation");
-        var getLocaldayofweek = localStorage.getItem("dayofweek");
+        var getLocaldayofweek = localStorage.getItem("day");
         var getLocalCusID = localStorage.getItem("Index")
         var getLocalType6 = localStorage.getItem("type6");
         // var Last_BookID = localStorage.getItem("last_BookID");
@@ -150,7 +150,7 @@
         var settings = {
             "async": true,
             "crossDomain": true,
-            "url": "http://172.26.252.97:8080/book?BookID=" + null + "&start=" + getLocalDate + "&Time=" + getLocalTime + "&Detail=" + getLocalCategory6 + "&Status=" + getLocalStatus + "&Type=" + getLocalType6 + "&end=" + getLocalDate + "&alert=" + getLocalalert +"&situation=" + getLocalsituation +"&dayofweek=" + getLocaldayofweek+ "&CusID=" + getLocalCusID,
+            "url": "http://172.26.200.73:8080/book?BookID=" + null + "&start=" + getLocalDate + "&Time=" + getLocalTime + "&Detail=" + getLocalCategory6 + "&Status=" + getLocalStatus + "&Type=" + getLocalType6 + "&end=" + getLocalDate + "&alert=" + getLocalalert +"&situation=" + getLocalsituation +"&dayofweek=" + getLocaldayofweek+ "&CusID=" + getLocalCusID,
             "method": "POST",
   "headers": {
     "Content-Type": "application/x-www-form-urlencoded",
